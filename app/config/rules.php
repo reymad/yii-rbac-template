@@ -20,5 +20,13 @@ return [
     '<controller:\w+>/<id:\d+>' => '<controller>/view',
     '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
     '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+/*
+    '<language:\w+>/'=>'/site/index',
+    '<language:\w+>/<controller>' => '<controller>',
+    '<language:\w+>/<controller>/<action>' => '<controller>/<action>',
+    '<language:\w+>/<controller>/<action>/<id:\d+>' => '<controller>/<action>',
+    '<language:\w+>/<controller>/<action>/<id:\d+>/<title>' => '<controller>/<action>',
+    '<language:\w+>/<controller>/<id:\d+>/<title>' => '<controller>/index',
+*/
 
 ];
