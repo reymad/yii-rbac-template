@@ -27,7 +27,8 @@
         "kartik-v/yii2-editable": "*",
         "2amigos/yii2-chartjs-widget" : "~2.0",
         "dkeeper/yii2-mobiledetect": "dev-master",
-        "scotthuangzl/yii2-google-chart": "dev-master"
+        "scotthuangzl/yii2-google-chart": "dev-master",
+        "thiagotalma/yii2-notify": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
