@@ -1,5 +1,6 @@
 /**
  * Created by jrey on 20/01/2017.
+ * modif from guthub
  */
 
 // !! install GULP dependencies
