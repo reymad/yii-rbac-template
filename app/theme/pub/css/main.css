@@ -95,7 +95,7 @@ $fuente_italic: 'Futura LT W01 Medium Oblique';
 $fuente_medium: 'Futura LT W01 Medium';
 */
 .site {
-  /* header partial */
+  /* header partial | comment */
   /*
   p {
     @include font-size(20px);
