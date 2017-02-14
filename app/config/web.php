@@ -12,6 +12,17 @@ $config = [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'oY1yy9HRy0o3a7umOB6xX1f5nkcKmjb6',
         ],
+        'formatter'   => [
+            'class'    => 'yii\i18n\Formatter',
+            'timezone' => 'Europe/Madrid',
+        ],
+        'assetManager' => [
+            'forceCopy' => (YII_ENV=='dev'),
+            //'appendTimestamp' => true,
+        ],
+        'mobiledetect' => [
+            'class' => 'dkeeper\mobiledetect\Detect',
+        ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
@@ -27,7 +38,7 @@ $config = [
             // send all mails to a file by default. You have to set
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
-            'useFileTransport' => true,
+            'useFileTransport' => (YII_ENV=='dev'),//true,
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -53,6 +64,18 @@ $config = [
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ],
             */
+        ],
+        'i18n'         => [
+            'translations' => [
+                '*' => [
+                    'class'              => 'yii\i18n\DbMessageSource',
+                    'sourceMessageTable' => 'Traduccion',
+                    'messageTable'       => 'TraduccionMensaje',
+                    'enableCaching'      => true,
+                    'cachingDuration'    => 600,
+                    //'forceTranslation'   => true,
+                ],
+            ],
         ],
     ],
     'params' => $params,
