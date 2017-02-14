@@ -41,6 +41,7 @@ $config = [
         'db' => require(__DIR__ . '/db.php'),
         'urlManager'   => [
             'class' => 'yii\web\UrlManager',
+            // 'class' => \app\components\MyUrlManager::className(),
             'showScriptName' => false,
             'enablePrettyUrl' => true,
             // 'suffix'          => false,

@@ -71,7 +71,7 @@ gulp.task( 'scripts', function() {
         .pipe( rename( { suffix: '.min' } ) )
         .pipe( uglify() )
         .pipe( gulp.dest( 'app/web/assets/dist/js' ) )
-        // .pipe( notify( { message: 'Scripts task complete' } ) );
+        .pipe( notify( { message: 'Scripts task complete' } ) );
 } );
 
 // Images funciona

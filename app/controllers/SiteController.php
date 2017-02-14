@@ -55,8 +55,51 @@ class SiteController extends MyController
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
+            /*
+            'auth'  => [
+                'class'           => 'yii\authclient\AuthAction',
+                'successCallback' => [$this, 'authSuccess'],
+            ],
+            */
         ];
     }
+
+    /**
+     * This function will be triggered when user is successfuly authenticated using some oAuth client.
+     *
+     * @param \yii\authclient\ClientInterface $client
+     * @return boolean|\yii\web\Response
+     */
+    /*
+    public function authSuccess($client)
+    {
+
+        $userAttributes = $client->getUserAttributes();
+
+        switch (get_class($client)) {
+            case Facebook::className():
+                $clientName = 'facebook';
+                break;
+            case Twitter::className():
+                $clientName = 'twitter';
+                break;
+            default:
+                $clientName = false;
+        }
+
+        $response = Yii::$app->getResponse();
+        $view = Yii::$app->getView();
+        $viewData = [
+            'userAttributes' => $userAttributes,
+            'client'         => $clientName,
+        ];
+
+        $response->content = $view->renderFile(Yii::getAlias('@app/views/site/social-redirect.php'), $viewData);
+
+        return $response;
+
+    }
+    */
 
     /**
      * Displays homepage.

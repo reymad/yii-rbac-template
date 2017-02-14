@@ -20,6 +20,9 @@ $(document).ready(function(){
                 console.log('done!!');
             });
 
+        intervalCounter++;
+        if(intervalCounter>5){ clearInterval(to); }
+
     }, 2000);
 
 
