@@ -28,6 +28,3 @@ phpunit.phar
 
 tests/_output/*
 tests/_support/_generated
-
-#node modules
-./node_modules/

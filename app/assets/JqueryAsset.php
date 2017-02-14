@@ -16,16 +16,15 @@ use yii\web\AssetBundle;
  */
 class jQueryAsset extends AssetBundle
 {
-    // public $basePath   = '@webroot';
-    // public $baseUrl    = '@web';
+
     public $sourcePath = '@app/theme/pub/jquery';
-    // public $sourcePath = '@web';
     public $css = [];
     public $js  = [
         'jquery.browser.js',
         'jquery.blockUI.js',
     ];
     public $depends = [
+
     ];
 
     public function init(){
