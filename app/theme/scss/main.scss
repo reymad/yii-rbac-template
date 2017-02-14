@@ -4,6 +4,10 @@
 // main
 .site{
 
+  // cabecera
+  @import 'partials/_header';
+
+  /*
   p {
     @include font-size(20px);
   }
@@ -52,6 +56,7 @@
   .container-with-floated-children {
     @extend %clearfix;
   }
+  */
 
 }
 
