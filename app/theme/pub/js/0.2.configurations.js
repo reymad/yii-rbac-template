@@ -23,7 +23,7 @@ var growlUIconfig = {
         backgroundColor: '#000',
         '-webkit-border-radius': '0px',
         '-moz-border-radius': '0px',
-        opacity: .6,
+        opacity: 0.6,
         color: '#fff'
     }
 };
@@ -44,7 +44,7 @@ var blockUIloadingConf ={
         backgroundColor: '#000',
         '-webkit-border-radius': '0px',
         '-moz-border-radius': '0px',
-        opacity: .6,
+        opacity: 0.6,
         color: '#fff'
     }
 };

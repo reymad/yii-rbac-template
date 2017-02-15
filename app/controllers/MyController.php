@@ -76,7 +76,7 @@ class MyController extends Controller
      * Se define cada traduccion en la corresponidente accion
      * $this->_translations['nombre.cadena'] = 'traducción!';
      * Se accede asi en js p.e:
-     *      Yii.t['nombre.cadena'] => 'traducción!'
+     *      YIIJS.t['nombre.cadena'] => 'traducción!'
      * */
     public function registerJsTranslations()
     {
