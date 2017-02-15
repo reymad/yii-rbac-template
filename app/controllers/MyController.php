@@ -21,17 +21,28 @@ class MyController extends Controller
     /*
      * Nombre que nuestra constante para Yii tendrá en js
      * */
-    const YIISJ = 'YIIJS';// Debe ser la misma que en configuration.js
+    const YIIJS = 'YIIJS';// console.log(YII)
 
-    // js translations >> usage yii.t['message'] => 'translation';
+    /*
+     * js translations >> usage yii.t['message'] => 'translation';
+     */
     public  $_translations = [];
+
+    /*
+    public function afterAction($action, $result)
+    {
+       $result = parent::afterAction($action, $result);
+       // custom code here
+       return $result;
+    }
+    */
 
     public function init()
     {
         parent::init();
 
         // inicializamos estas variables js SIEMPRE!
-        $globalJsVar  = "\n var " . self::YIISJ . " = {}; ";
+        $globalJsVar  = "\n var " . self::YIIJS . " = {}; ";
         /*
          * ir añadiendo aquí las variables js que vayamos a necesitar globalmente en <head></head>
          * access => YIIJS.url.current_url >> 'http://dominio.some/xx/xx'
@@ -51,7 +62,7 @@ class MyController extends Controller
             // add here
         ];
         $json          = Json::encode($globalHead);
-        $globalJsVar  .= "\n " . self::YIISJ . " = " . $json . ";";
+        $globalJsVar  .= "\n " . self::YIIJS . " = " . $json . ";";
         $this->view->registerJs($globalJsVar, View::POS_HEAD, 'js-global');
 
         #add your logic: read the cookie and then set the language
@@ -59,15 +70,6 @@ class MyController extends Controller
         // registro las traudcciones que necesitamos desde el layout
         $this->registerLayoutTranslations();
     }
-
-    /*
-    public function afterAction($action, $result)
-    {
-        $result = parent::afterAction($action, $result);
-        // custom code here
-        return $result;
-    }
-    */
 
     /*
      * Registra dentro de <head> variable traducción js
@@ -84,8 +86,8 @@ class MyController extends Controller
                 $objeto['t'][$message] = $translation;
             }
             $json    = Json::encode($objeto);
-            // Merge en javascript Object.assign(obj1,obj2,etc);
-            $script  = "\nObject.assign(".self::YIISJ.", ".$json.");";
+            // Merge array/object en javascript Object.assign(obj1,obj2,etc);
+            $script  = "\nObject.assign(".self::YIIJS.", ".$json.");";
             $this->view->registerJs($script, View::POS_HEAD, 'js-translations');
         }
     }
