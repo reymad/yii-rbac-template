@@ -9,12 +9,17 @@
 namespace app\controllers;
 
 use Yii;
+use yii\web\View;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Json;
 use yii\web\Controller;
 
 
 class MyController extends Controller
 {
+
+    // usage yii.t['message'] => 'translation';
+    private $jsTranslationObject = [ 't' => [] ];
 
     public function init()
     {
@@ -23,6 +28,37 @@ class MyController extends Controller
         $this->setLanguage();
 
     }
+
+    /*
+    public function afterAction($action, $result)
+    {
+        $result = parent::afterAction($action, $result);
+        // custom code here
+        return $result;
+    }
+    */
+
+    /*
+     * registra dentro de <head> variable traducción js
+     * Se define cada traduccion en la corresponidente accion
+     * $this->setFrontTranslation('nombre.cadena','traducción!');
+     * Se accede asi en js p.e:
+     *  Yii.t['nombre.cadena'] => 'traducción!'
+     * */
+    public function setFrontTranslation($message, $tranlation)
+    {
+        $this->jsTranslationObject['t'][$message] = $tranlation;
+        $this->registerFrontTranslation();
+    }
+    private function registerFrontTranslation()
+    {
+        $translations = Json::encode($this->jsTranslationObject);
+        $script       = " Yii = " . $translations . ";\n";
+        $this->view->registerJs($script, View::POS_HEAD, 'mapJs');
+    }
+    /*
+     * Fin traduccion front
+     * */
 
     private function setLanguage(){
 

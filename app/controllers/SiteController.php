@@ -108,6 +108,14 @@ class SiteController extends MyController
      */
     public function actionIndex()
     {
+
+        $this->setFrontTranslation('app.hola','Hola!');
+        $this->setFrontTranslation('app.adios','Adios!');
+        $this->setFrontTranslation('app.hola-mundo','Hola Mundo!');
+        $this->setFrontTranslation('app.foo','Foo!');
+        $this->setFrontTranslation('fable.bar','Bar!');
+        // $this->registerFrontTranslation();
+
         return $this->render('index');
     }
 

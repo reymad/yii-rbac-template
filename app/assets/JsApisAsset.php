@@ -14,14 +14,15 @@ use yii\web\AssetBundle;
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
-class jQueryAsset extends AssetBundle
+class JsApisAsset extends AssetBundle
 {
 
-    public $sourcePath = '@app/theme/pub/jquery';
+    public $sourcePath = '@app/theme/pub/jsapis';
     public $css = [];
     public $js  = [
-        'jquery.browser.js',
-        'jquery.blockUI.js',
+        'jquery/jquery.browser.js',
+        'jquery/jquery.blockUI.js',
+        'cookieconsent.min.js',
     ];
     public $depends = [
 
