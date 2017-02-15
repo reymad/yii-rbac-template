@@ -1,5 +1,6 @@
 /**
  * Created by jrey on 19/09/2016.
+ * ready
  */
 $(document).ready(function(){
 
@@ -26,7 +27,8 @@ $(document).ready(function(){
     }, 2000);
 
 
-    $.blockUI({message: 'Click anywhere to stop loading...'});
+    $.blockUI(growlUIconfig);
+   //  $.blockUI({})
 
 
 });
@@ -43,4 +45,8 @@ $(window).on('click', function(){
     $.unblockUI();
 });
 
-$(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
+$(document).ajaxStart(ajaxStart).ajaxStop(ajaxStop);
+
+/*
+* fin ready
+* */

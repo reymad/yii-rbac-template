@@ -9,6 +9,7 @@
 namespace app\controllers;
 
 use Yii;
+use yii\helpers\Url;
 use yii\web\View;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Json;
@@ -17,16 +18,46 @@ use yii\web\Controller;
 
 class MyController extends Controller
 {
+    /*
+     * Nombre que nuestra constante para Yii tendrá en js
+     * */
+    const YIISJ = 'YIIJS';// Debe ser la misma que en configuration.js
 
-    // usage yii.t['message'] => 'translation';
-    private $jsTranslationObject = [ 't' => [] ];
+    // js translations >> usage yii.t['message'] => 'translation';
+    public  $_translations = [];
 
     public function init()
     {
         parent::init();
+
+        // inicializamos estas variables js SIEMPRE!
+        $globalJsVar  = "\n var " . self::YIISJ . " = {}; ";
+        /*
+         * ir añadiendo aquí las variables js que vayamos a necesitar globalmente en <head></head>
+         * access => YIIJS.url.current_url >> 'http://dominio.some/xx/xx'
+         */
+        $globalHead   = [
+            'url'=>[
+                'current_url' => Url::base(true) . Yii::$app->request->url,
+                // add here
+            ],
+            'usuario'=>[
+                'guest' => Yii::$app->user->isGuest,
+                // add here
+            ],
+            'entorno'=>[
+                 'env' => YII_ENV,
+            ],
+            // add here
+        ];
+        $json          = Json::encode($globalHead);
+        $globalJsVar  .= "\n " . self::YIISJ . " = " . $json . ";";
+        $this->view->registerJs($globalJsVar, View::POS_HEAD, 'js-global');
+
         #add your logic: read the cookie and then set the language
         $this->setLanguage();
-
+        // registro las traudcciones que necesitamos desde el layout
+        $this->registerLayoutTranslations();
     }
 
     /*
@@ -39,26 +70,41 @@ class MyController extends Controller
     */
 
     /*
-     * registra dentro de <head> variable traducción js
+     * Registra dentro de <head> variable traducción js
      * Se define cada traduccion en la corresponidente accion
-     * $this->setFrontTranslation('nombre.cadena','traducción!');
+     * $this->_translations['nombre.cadena'] = 'traducción!';
      * Se accede asi en js p.e:
-     *  Yii.t['nombre.cadena'] => 'traducción!'
+     *      Yii.t['nombre.cadena'] => 'traducción!'
      * */
-    public function setFrontTranslation($message, $tranlation)
+    public function registerJsTranslations()
     {
-        $this->jsTranslationObject['t'][$message] = $tranlation;
-        $this->registerFrontTranslation();
-    }
-    private function registerFrontTranslation()
-    {
-        $translations = Json::encode($this->jsTranslationObject);
-        $script       = " Yii = " . $translations . ";\n";
-        $this->view->registerJs($script, View::POS_HEAD, 'js-translations');
+        if(is_array($this->_translations) && !empty($this->_translations)){
+            $objeto = [ 't'=>[] ];
+            foreach($this->_translations as $message => $translation){
+                $objeto['t'][$message] = $translation;
+            }
+            $json    = Json::encode($objeto);
+            // Merge en javascript Object.assign(obj1,obj2,etc);
+            $script  = "\nObject.assign(".self::YIISJ.", ".$json.");";
+            $this->view->registerJs($script, View::POS_HEAD, 'js-translations');
+        }
     }
     /*
      * Fin traduccion front
      * */
+    private function registerLayoutTranslations(){
+
+        // add as many as you need
+        $this->_translations['app.hola-mundo']               = Yii::t('app','hola-mundo');
+        $this->_translations['app.adios-mundo']              = Yii::t('app','adios-mundo');
+        $this->_translations['app.general.cargando']         = Yii::t('app','general-cargando');
+        $this->_translations['app.general.politica-cookies'] = Yii::t('app','general-politica-cookies');
+        $this->_translations['app.general.bienvenido']       = Yii::t('app','general-bienvenido');
+        $this->_translations['app.general.aceptar']          = Yii::t('app','general-aceptar');
+
+        $this->registerJsTranslations();
+
+    }
 
     private function setLanguage(){
 

@@ -7,6 +7,7 @@ use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use yii\helpers\ArrayHelper;
 
 class SiteController extends MyController
 {
@@ -109,12 +110,7 @@ class SiteController extends MyController
     public function actionIndex()
     {
 
-        $this->setFrontTranslation('app.hola','Hola!');
-        $this->setFrontTranslation('app.adios','Adios!');
-        $this->setFrontTranslation('app.hola-mundo','Hola Mundo!');
-        $this->setFrontTranslation('app.foo','Foo!');
-        $this->setFrontTranslation('fable.bar','Bar!');
-        // $this->registerFrontTranslation();
+        $this->_translations['app.hola-mundo']  = Yii::t('app','Hola Mundo!!');
 
         return $this->render('index');
     }
@@ -158,6 +154,7 @@ class SiteController extends MyController
      */
     public function actionContact()
     {
+
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
             Yii::$app->session->setFlash('contactFormSubmitted');
