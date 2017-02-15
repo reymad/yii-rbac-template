@@ -54,7 +54,7 @@ class MyController extends Controller
     {
         $translations = Json::encode($this->jsTranslationObject);
         $script       = " Yii = " . $translations . ";\n";
-        $this->view->registerJs($script, View::POS_HEAD, 'mapJs');
+        $this->view->registerJs($script, View::POS_HEAD, 'js-translations');
     }
     /*
      * Fin traduccion front
