@@ -27,4 +27,26 @@ class HelloController extends Controller
     {
         echo $message . "\n";
     }
+
+
+    public function actionCurl()
+    {
+
+        /*
+         * WS Basic oauth soap client
+         * */
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_URL => "http://url?user=xx&pass=xx",
+            CURLOPT_USERAGENT => 'Codular Sample cURL Request'
+        ));
+        $resp = curl_exec($curl);
+        curl_close($curl);
+        $resp = json_decode($resp, true);
+
+        var_dump($resp);
+
+    }
+
 }
