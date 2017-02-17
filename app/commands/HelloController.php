@@ -7,6 +7,8 @@
 
 namespace app\commands;
 
+use SoapClient;
+use SoapFault;
 use yii\console\Controller;
 
 /**
@@ -19,6 +21,9 @@ use yii\console\Controller;
  */
 class HelloController extends Controller
 {
+
+    private $_client;
+
     /**
      * This command echoes what you have entered as the message.
      * @param string $message the message to be echoed.
@@ -33,7 +38,7 @@ class HelloController extends Controller
     {
 
         /*
-         * WS Basic oauth soap client
+         * WS Basic oauth client
          * */
         $curl = curl_init();
         curl_setopt_array($curl, array(
@@ -46,6 +51,32 @@ class HelloController extends Controller
         $resp = json_decode($resp, true);
 
         var_dump($resp);
+
+
+        /*
+         * SOAP CLIENT EXAMPLE
+         * */
+        $response = array();
+
+        try {
+
+            $this->_client = new SoapClient('http:url/xxx.asmx?wsdl', array('trace'=>1));
+            $response = $this->_client->nombreWsFuncion(array(
+                'usuario' => 'xxx',
+                'Pass' => 'xxx'
+            ));
+
+        } catch (SoapFault $fault) {
+
+            var_dump(array(
+                'fault' => $fault,
+                'request' => $this->_client->__getLastRequest(),
+                'response' => $this->_client->__getLastResponse(),
+            ));
+
+        }
+
+        return $response;
 
     }
 
