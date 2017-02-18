@@ -1,0 +1,153 @@
+/*
+Usage
+p {
+  @include font-size(14px)
+}
+*/
+/*
+Usage
+.sidebar {
+  width: 60%;
+  float: left;
+  margin: 0 2% 0 0;
+  @include bp-small {
+    width: 100%;
+    float: none;
+    margin: 0;
+  }
+}
+*/
+/*
+Usage
+@include keyframes(slide-down) {
+  0% { opacity: 1; }
+  90% { opacity: 0; }
+}
+.element {
+  width: 100px;
+  height: 100px;
+  background: black;
+  @include animation('slide-down 5s 3');
+}
+*/
+/*
+// usage
+.faded-text {
+  @include opacity(0.8);
+}
+*/
+/*
+All in all you need this:
+pattern.svg
+pattern.png
+pattern@2x.png
+Usage
+body {
+  @include background-image('pattern');
+}
+*/
+/*
+Usage
+.container-with-floated-children {
+  @extend %clearfix;
+}
+*/
+.fleft {
+  float: left; }
+
+.fright {
+  float: right; }
+
+.clear {
+  clear: both !important; }
+
+.text-center {
+  text-align: center; }
+
+.text-justify {
+  text-align: justify; }
+
+.text-left {
+  text-align: left; }
+
+.text-right {
+  text-align: right; }
+
+.ohidden {
+  overflow: hidden; }
+
+.oauto {
+  overflow: auto; }
+
+.oculto {
+  display: none; }
+
+.visible {
+  display: block; }
+
+.centered {
+  margin: 0 auto; }
+
+/*
+$fuente: 'Futura LT W01 Medium Condensed', Arial, Helvetica, sans-serif;
+$fuente_bold: 'Futura LT W01 X Bold Condensed';
+$fuente_italic: 'Futura LT W01 Medium Oblique';
+$fuente_medium: 'Futura LT W01 Medium';
+*/
+.site {
+  /* header partial | comment */
+  /*
+  p {
+    @include font-size(20px);
+  }
+
+  .transition{
+    border: 1px solid $color-black;
+    padding: 1em;
+    background: $color-white;
+    @include transition(background .8s ease);
+    &:hover{
+      background: $color-grey;
+      cursor: pointer;
+    }
+
+  }
+
+  // animation frames
+  @include keyframes(slide-down) {
+    0% { opacity: 1; }
+    90% { opacity: 0; }
+  }
+  .animated {
+    width: 100px;
+    height: 100px;
+    background: black;
+    @include animation('slide-down 5s 3');
+  }
+
+  .sidebar {
+    height: 60px;
+    // background: $color-black;
+    width: 60%;
+    float: left;
+    background: $color-black;
+    color: $color-white;
+    @include font-size(25px);
+    text-align: center;
+    margin: 0 2% 0 0;
+    @include bp-small {
+      width: 100%;
+      float: none;
+      margin: 0;
+    }//
+  }
+
+  .container-with-floated-children {
+    @extend %clearfix;
+  }
+  */ }
+  .site .footer {
+    height: 60px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    padding-top: 20px; }
