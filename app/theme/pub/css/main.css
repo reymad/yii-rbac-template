@@ -88,6 +88,9 @@ Usage
 .centered {
   margin: 0 auto; }
 
+.bordered {
+  border: 1px solid #000; }
+
 /*
 $fuente: 'Futura LT W01 Medium Condensed', Arial, Helvetica, sans-serif;
 $fuente_bold: 'Futura LT W01 X Bold Condensed';

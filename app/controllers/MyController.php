@@ -18,6 +18,7 @@ use yii\web\Controller;
 
 class MyController extends Controller
 {
+
     /*
      * Nombre que nuestra constante para Yii tendrá en js
      * */
@@ -40,6 +41,7 @@ class MyController extends Controller
     public function init()
     {
         parent::init();
+
 
         // inicializamos estas variables js SIEMPRE!
         $globalJsVar  = "\n var " . self::YIIJS . " = {}; ";
@@ -80,6 +82,7 @@ class MyController extends Controller
      * */
     public function registerJsTranslations()
     {
+
         if(is_array($this->_translations) && !empty($this->_translations)){
             $objeto = [ 't'=>[] ];
             foreach($this->_translations as $message => $translation){

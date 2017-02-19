@@ -8,6 +8,7 @@
     // npm install gulp gulp-jshint gulp-ruby-sass gulp-minify-css gulp-concat gulp-uglify gulp-rename gulp-notify gulp-autoprefixer gulp-imagemin gulp-cache --save
     // npm install --save-dev gulp gulp-sass
     // npm install --save-dev gulp-notify
+    // npm install -g gulp-cli
 
 'use strict';
 

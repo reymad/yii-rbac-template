@@ -3,10 +3,11 @@
 namespace app\controllers;
 
 use Yii;
+use app\models\ContactForm;
+use app\models\LoginForm;
+use app\models\Test;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
 use yii\helpers\ArrayHelper;
 
 class SiteController extends MyController
@@ -112,7 +113,11 @@ class SiteController extends MyController
 
         $this->_translations['app.hola-mundo']  = Yii::t('app','Hola Mundo!!');
 
-        return $this->render('index');
+        $test = Test::find()->where('test_id=1')->one();
+        $test->test_desc = 'nueva desc';
+        $test->save();
+
+        return $this->render('index',['params'=>$test]);
     }
 
     /**
