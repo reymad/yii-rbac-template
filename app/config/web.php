@@ -92,8 +92,8 @@ if (YII_ENV_DEV) {
         // uncomment the following to add your IP if you are not connecting from localhost.
         'allowedIPs' => [
             '127.0.0.1', '::1', 
-            '192.168.10.1', // curro
-            '192.168.56.1',// casa
+            '192.xxx.xx.x', // curro
+            '192.xxx.xx.x',// casa
             ],
     ];
 
@@ -103,8 +103,8 @@ if (YII_ENV_DEV) {
         // uncomment the following to add your IP if you are not connecting from localhost.
         'allowedIPs' => [
             '127.0.0.1', '::1', 
-            '192.168.10.1', // curro
-            '192.168.56.1',// casa
+            '192.xxx.xx.x', // curro
+            '192.xxx.xx.x',// casa
         ],
     ];
 }
