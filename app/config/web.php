@@ -7,15 +7,23 @@ $config = [
     'basePath' => dirname(__DIR__),
     'language' => 'es-ES',
     'bootstrap' => ['log'],
+    'modules' => [
+        'user' => [
+            'class' => 'dektrium\user\Module',
+            'admins' => ['admin','jesus']
+        ],
+    ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'oY1yy9HRy0o3a7umOB6xX1f5nkcKmjb6',
         ],
+        /*
         'formatter'   => [
             'class'    => 'yii\i18n\Formatter',
             'timezone' => 'Europe/Madrid',
         ],
+        */
         'assetManager' => [
             'forceCopy' => (YII_ENV=='dev'),
             //'appendTimestamp' => true,
@@ -65,6 +73,7 @@ $config = [
             ],
             */
         ],
+        /*
         'i18n'         => [
             'translations' => [
                 '*' => [
@@ -77,6 +86,7 @@ $config = [
                 ],
             ],
         ],
+        */
     ],
     'params' => $params,
 ];

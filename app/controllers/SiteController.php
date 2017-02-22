@@ -113,11 +113,7 @@ class SiteController extends MyController
 
         $this->_translations['app.hola-mundo']  = Yii::t('app','Hola Mundo!!');
 
-        $test = Test::find()->where('test_id=1')->one();
-        $test->test_desc = 'nueva desc';
-        $test->save();
-
-        return $this->render('index',['params'=>$test]);
+        return $this->render('index');
     }
 
     /**

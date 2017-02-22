@@ -43,9 +43,7 @@ $this->title = 'My Yii Application';
                 <h2>Heading</h2>
 
                 <p>
-                <?=
-                    var_dump($params);
-                ?>
+
                 </p>
 
                 <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
