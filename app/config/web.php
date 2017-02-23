@@ -12,6 +12,36 @@ $config = [
             'class' => 'dektrium\user\Module',
             'admins' => ['admin','jesus']
         ],
+        'admin' => [
+            'class' => 'mdm\admin\Module',
+            'layout' => 'left-menu',
+            // 'mainLayout' => '@app/views/layouts/main.php',
+            'menus' => [
+                'assignment' => [
+                    'label' => 'Grant Access' // change label
+                ],
+                'route' => null, // disable menu
+            ],
+            'controllerMap' => [
+                'assignment' => [
+                    'class' => 'mdm\admin\controllers\AssignmentController',
+                    'userClassName' => 'app\models\User',
+                    'idField' => 'id',
+                    'usernameField' => 'username',
+                    // 'fullnameField' => 'profile.name',
+                    'extraColumns' => [
+                        [
+                            'attribute' => 'estado',
+                            'label' => 'Estado',
+                            'value' => function($model, $key, $index, $column) {
+                                return $model->estado;
+                            },
+                        ],
+                    ],
+                    // 'searchClass' => 'app\models\UserSearch'
+                ],
+            ],
+        ]
     ],
     'components' => [
         'request' => [
@@ -34,10 +64,15 @@ $config = [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        //
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
         ],
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager', // or use 'yii\rbac\DbManager'
+        ],
+
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
@@ -87,6 +122,21 @@ $config = [
             ],
         ],
         */
+    ],
+    // yii2-admin ext
+    'as access' => [
+        'class' => 'mdm\admin\components\AccessControl',
+        'allowActions' => [
+            'site/*',
+            'admin/*',
+            'user/*',
+            'some-controller/some-action',
+            // The actions listed here will be allowed to everyone including guests.
+            // So, 'admin/*' should not appear here in the production, of course.
+            // But in the earlier stages of your development, you may probably want to
+            // add a lot of actions here until you finally completed setting up rbac,
+            // otherwise you may not even take a first step.
+        ]
     ],
     'params' => $params,
 ];

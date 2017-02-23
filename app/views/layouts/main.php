@@ -44,7 +44,7 @@ FrontAsset::register($this);
                 ['label' => 'SignUp', 'url' => ['/user/register']]
             ) : (''),
             Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
+                ['label' => 'Login', 'url' => ['/user/login']]
             ) : (
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post')

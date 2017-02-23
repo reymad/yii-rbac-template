@@ -34,12 +34,14 @@ class HelloController extends Controller
     }
 
 
+
     public function actionCurl()
     {
 
         /*
          * WS Basic oauth client
          * */
+        /*
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,
@@ -51,11 +53,13 @@ class HelloController extends Controller
         $resp = json_decode($resp, true);
 
         var_dump($resp);
+        */
 
 
         /*
          * SOAP CLIENT EXAMPLE
          * */
+        /*
         $response = array();
 
         try {
@@ -77,6 +81,7 @@ class HelloController extends Controller
         }
 
         return $response;
+        */
 
     }
 
