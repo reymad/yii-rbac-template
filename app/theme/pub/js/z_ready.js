@@ -27,7 +27,7 @@ $(document).ready(function(){
     }, 2000);
 
 
-    $.blockUI(growlUIconfig);
+    // $.blockUI(growlUIconfig);
    //  $.blockUI({})
 
 

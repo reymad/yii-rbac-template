@@ -2,12 +2,13 @@
 
 namespace app\modules\admon\controllers;
 
+use app\controllers\MyController;
 use yii\web\Controller;
 
 /**
  * Default controller for the `admon` module
  */
-class DefaultController extends Controller
+class AdmonController extends MyController
 {
 
     /**

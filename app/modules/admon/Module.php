@@ -53,6 +53,46 @@ class Module extends \yii\base\Module
     {
         parent::init();
 
+        $this->layout = 'main';
+
         // custom initialization code goes here
+
+        $this->modules = [
+            'user' => [
+                'class' => 'dektrium\user\Module',
+                'admins' => ['admin','jesus'],
+            ],
+            'admin' => [
+                'class' => 'mdm\admin\Module',
+                'layout' => 'left-menu',
+                'mainLayout' => '@app/modules/admon/views/layouts/main.php',// usamos el layout de nuestra app
+                'menus' => [
+                    'assignment' => [
+                        'label' => 'Grant Access' // change label
+                    ],
+                    'route' => null, // disable menu
+                ],
+                'controllerMap' => [
+                    'assignment' => [
+                        'class' => 'mdm\admin\controllers\AssignmentController',
+                        'userClassName' => 'app\models\User',
+                        'idField' => 'id',
+                        'usernameField' => 'username',
+                        // 'fullnameField' => 'profile.name',
+                        'extraColumns' => [
+                            [
+                                'attribute' => 'status',
+                                'label' => 'Status',
+                                'value' => function($model, $key, $index, $column) {
+                                    return $model->status;
+                                },
+                            ],
+                        ],
+                        // 'searchClass' => 'app\models\UserSearch'
+                    ],
+                ],
+            ]
+        ];
+
     }
 }

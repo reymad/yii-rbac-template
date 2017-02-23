@@ -20,6 +20,23 @@ return [
     '<controller:\w+>/<id:\d+>' => '<controller>/view',
     '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
     '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+
+    'user/<controller:\w+>/<id:\d+>' => 'admon/user/<controller>/view',
+    'user/<controller:\w+>/<action:\w+>/<id:\d+>' => 'admon/user/<controller>/<action>',
+    'user/<controller:\w+>/<action:\w+>' => 'admon/user/<controller>/<action>',
+
+    'user/admin/update-profile/<id:\d+>' => 'admon/user/<controller>/<action>',
+
+    /*
+    'admon/user/admin/index'=>'user/admin/index',
+    'admon/user/admin/create'=>'user/admin/create',
+    'user/admin/create'=>'admon/user/admin/create',
+    */
+
+    // estos funcionan
+    // 'user/admin/create'=>'admon/user/admin/create',
+    // 'user/admin/index'=>'admon/user/admin/index',
+
 /*
     '<language:\w+>/'=>'/site/index',
     '<language:\w+>/<controller>' => '<controller>',
@@ -28,5 +45,6 @@ return [
     '<language:\w+>/<controller>/<action>/<id:\d+>/<title>' => '<controller>/<action>',
     '<language:\w+>/<controller>/<id:\d+>/<title>' => '<controller>/index',
 */
+
 
 ];

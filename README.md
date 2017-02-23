@@ -14,3 +14,7 @@ https://github.com/mdmsoft/yii2-admin/blob/master/docs/guide/configuration.md
 -* If you use database (class 'yii\rbac\DbManager') to save rbac data, execute the migration here:
 
 > yii migrate --migrationPath=@yii/rbac/migrations
+
+-* add fields status, password_token_access (maybe change is > user_id on user table)
+
+

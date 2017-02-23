@@ -10,40 +10,18 @@ $config = [
     'modules' => [
         'admon' => [
             'class' => 'app\modules\admon\Module',
+            // 'defaultController' => 'AdmonController',
+            'defaultRoute' => 'admon/index',
         ],
+        /* estos son sub-modules de admon */
         'user' => [
             'class' => 'dektrium\user\Module',
-            'admins' => ['admin','jesus']
+            'admins' => ['admin','jesus'],
+            // rest of config inside Admon module
         ],
         'admin' => [
             'class' => 'mdm\admin\Module',
-            'layout' => 'left-menu',
-            // 'mainLayout' => '@app/views/layouts/main.php',
-            'menus' => [
-                'assignment' => [
-                    'label' => 'Grant Access' // change label
-                ],
-                'route' => null, // disable menu
-            ],
-            'controllerMap' => [
-                'assignment' => [
-                    'class' => 'mdm\admin\controllers\AssignmentController',
-                    'userClassName' => 'app\models\User',
-                    'idField' => 'id',
-                    'usernameField' => 'username',
-                    // 'fullnameField' => 'profile.name',
-                    'extraColumns' => [
-                        [
-                            'attribute' => 'status',
-                            'label' => 'Status',
-                            'value' => function($model, $key, $index, $column) {
-                                return $model->status;
-                            },
-                        ],
-                    ],
-                    // 'searchClass' => 'app\models\UserSearch'
-                ],
-            ],
+            // rest of config inside Admon module
         ]
     ],
     'components' => [
@@ -156,24 +134,27 @@ if (YII_ENV_DEV) {
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        // 'allowedIPs' => ['*'],// quitar en prod
+        'allowedIPs' => ['*'],// quitar en prod
+        /*
         'allowedIPs' => [
-            '127.0.0.1', '::1', 
-            '192.168.10.1', // curro
+            '127.0.0.1', '::1',
             // '192.xxx.xx.x',// casa
             ],
+        */
     ];
 
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        // 'allowedIPs' => ['*'],// quitar en prod
+        'allowedIPs' => ['*'],// quitar en prod
+        /*
         'allowedIPs' => [
             '127.0.0.1', '::1', 
             '192.168.10.1', // curro
             // '192.xxx.xx.x',// casa
         ],
+        */
     ];
 }
 
