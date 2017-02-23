@@ -8,6 +8,9 @@ $config = [
     'language' => 'es-ES',
     'bootstrap' => ['log'],
     'modules' => [
+        'admon' => [
+            'class' => 'app\modules\admon\Module',
+        ],
         'user' => [
             'class' => 'dektrium\user\Module',
             'admins' => ['admin','jesus']
@@ -31,10 +34,10 @@ $config = [
                     // 'fullnameField' => 'profile.name',
                     'extraColumns' => [
                         [
-                            'attribute' => 'estado',
-                            'label' => 'Estado',
+                            'attribute' => 'status',
+                            'label' => 'Status',
                             'value' => function($model, $key, $index, $column) {
-                                return $model->estado;
+                                return $model->status;
                             },
                         ],
                     ],
@@ -130,6 +133,9 @@ $config = [
             'site/*',
             'admin/*',
             'user/*',
+            'debug/*',
+            'gii/*',
+            'admon/*',
             'some-controller/some-action',
             // The actions listed here will be allowed to everyone including guests.
             // So, 'admin/*' should not appear here in the production, of course.
@@ -150,10 +156,11 @@ if (YII_ENV_DEV) {
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
+        // 'allowedIPs' => ['*'],// quitar en prod
         'allowedIPs' => [
             '127.0.0.1', '::1', 
-            '192.xxx.xx.x', // curro
-            '192.xxx.xx.x',// casa
+            '192.168.10.1', // curro
+            // '192.xxx.xx.x',// casa
             ],
     ];
 
@@ -161,10 +168,11 @@ if (YII_ENV_DEV) {
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
+        // 'allowedIPs' => ['*'],// quitar en prod
         'allowedIPs' => [
             '127.0.0.1', '::1', 
-            '192.xxx.xx.x', // curro
-            '192.xxx.xx.x',// casa
+            '192.168.10.1', // curro
+            // '192.xxx.xx.x',// casa
         ],
     ];
 }
