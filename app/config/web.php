@@ -138,9 +138,9 @@ $config = [
         'allowActions' => [
             // estas acciones e
 
-            // 'site/*',
+            'site/*',
             // 'admin/*',
-            // 'user/*',
+            'user/*',
             'debug/*',
             'gii/*',
             // 'admon/*',

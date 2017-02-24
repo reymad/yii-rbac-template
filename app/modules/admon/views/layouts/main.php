@@ -4,6 +4,7 @@
 /* @var $content string */
 
 use app\assets\FrontAsset;
+use mdm\admin\components\MenuHelper;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
@@ -26,37 +27,39 @@ FrontAsset::register($this);
 
 <div class="wrap">
     <?php
+
+    // frontend menu
+
     NavBar::begin([
-        'brandLabel' => 'BACKEND',
+        'brandLabel' => 'Yii Project :: Backend',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
+
+    // logout va por form, lo excluimos de rbac
+    $menu = MenuHelper::getAssignedMenu(Yii::$app->user->id);
+    $logoutItem[] = '<li>'
+        . Html::beginForm(['/site/logout'], 'post')
+        . Html::submitButton(
+            'Logout (' . Yii::$app->user->identity->username . ')',
+            ['class' => 'btn btn-link logout']
+        )
+        . Html::endForm()
+        . '</li>';
+    $menu = \yii\helpers\ArrayHelper::merge($menu, $logoutItem);
+
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ? (
-            ['label' => 'SignUp', 'url' => ['/user/register']]
-            ) : (''),
-            Yii::$app->user->isGuest ? (
-            ['label' => 'Login', 'url' => ['/user/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
+        'items' =>$menu,
     ]);
+
+
     NavBar::end();
+
+    ?>
+
     ?>
 
     <div class="container">

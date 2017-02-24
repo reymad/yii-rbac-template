@@ -10,8 +10,6 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
-use mdm\admin\components\MenuHelper;
-
 FrontAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -29,46 +27,7 @@ FrontAsset::register($this);
 
 <div class="wrap">
     <?php
-    NavBar::begin([
-        'brandLabel' => 'Yii Project',
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar-inverse navbar-fixed-top',
-        ],
-    ]);
-    /*
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'SignUp', 'url' => ['/user/register']]
-            ) : (''),
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/user/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
-    ]);
-    NavBar::end();
-    */
-
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => MenuHelper::getAssignedMenu(Yii::$app->user->id)
-    ]);
-    NavBar::end();
-
+        echo $this->render('_menu');
     ?>
 
     <div class="container">
