@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use app\components\RbacConf;
+use mdm\admin\components\DbManager;
 use Yii;
 
 class User extends \dektrium\user\models\User {
@@ -25,6 +27,19 @@ class User extends \dektrium\user\models\User {
         $role = current($roles);
 
         return $role->name;
+    }
+
+    /** @inheritdoc */
+    public function afterSave($insert, $changedAttributes)
+    {
+        parent::afterSave($insert, $changedAttributes);
+
+        // INSERTAMOS ROL USUARIO POR DEFECTO CUANDO UN USUARIO SE REGISTRA
+        $auth = new DbManager;
+        $auth->init();
+        $role = $auth->getRole(RbacConf::ROLE_USUARIO);
+        $auth->assign($role, $this->id);
+
     }
 
 }

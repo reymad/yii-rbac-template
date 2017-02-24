@@ -12,7 +12,7 @@ use yii\filters\VerbFilter;
 class Module extends \yii\base\Module
 {
 
-    /** @inheritdoc */
+
     public function behaviors()
     {
         return [
@@ -32,11 +32,26 @@ class Module extends \yii\base\Module
                     'class' => AccessRule::className(),
                 ],
                 'rules' => [
+                    /*
+                    [
+                        'allow' => false,
+                        'roles' => ['?'],// estaba como  'admin'
+                    ],
+                    /*
                     [
                         'allow' => true,
-                        'roles' => ['@'],//estaba como  'admin'
+                        'roles' => ['admin'],// estaba como  'admin'
+                    ],
+                    */
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            return \Yii::$app->user->identity->isAdmin;
+                        }
                     ],
                 ],
+
             ],
         ];
     }
@@ -53,10 +68,9 @@ class Module extends \yii\base\Module
     {
         parent::init();
 
-        $this->layout = 'main';
+        $this->layout = 'main';// admon/views/layouts/main
 
         // custom initialization code goes here
-
         $this->modules = [
             'user' => [
                 'class' => 'dektrium\user\Module',

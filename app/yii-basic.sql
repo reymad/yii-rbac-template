@@ -1,5 +1,5 @@
 ﻿# Host: yiiadvanced.dev  (Version 5.5.47-0+deb7u1)
-# Date: 2017-02-23 19:01:17
+# Date: 2017-02-24 13:07:52
 # Generator: MySQL-Front 6.0  (Build 1.36)
 
 /*!40101 SET NAMES utf8 */;
@@ -27,6 +27,7 @@ CREATE TABLE `auth_item` (
 # Data for table "auth_item"
 #
 
+INSERT INTO `auth_item` VALUES ('/*',2,NULL,NULL,NULL,1487929467,1487929467),('/admin/*',2,NULL,NULL,NULL,1487929467,1487929467),('/admon/*',2,NULL,NULL,NULL,1487929467,1487929467),('/site/*',2,NULL,NULL,NULL,1487937905,1487937905),('/site/index',2,NULL,NULL,NULL,1487929467,1487929467),('admin',1,'Administrador',NULL,NULL,1487929081,1487929081),('invitado',1,'invitado',NULL,NULL,1487937874,1487937874),('permisos_admin',2,'permisos_admin',NULL,NULL,1487934160,1487934526),('permisos_invitado',2,'permisos_invitado',NULL,NULL,1487937939,1487937939),('permisos_usuario',2,'permisos_usuario',NULL,NULL,1487934555,1487934555),('usuario',1,'Usuario normal',NULL,NULL,1487929467,1487930802);
 
 #
 # Structure for table "auth_assignment"
@@ -45,6 +46,7 @@ CREATE TABLE `auth_assignment` (
 # Data for table "auth_assignment"
 #
 
+INSERT INTO `auth_assignment` VALUES ('admin','1',1487929100),('permisos_admin','1',NULL),('permisos_usuario','2',1487934574),('usuario','2',1487929486),('usuario','3',1487936897);
 
 #
 # Structure for table "auth_item_child"
@@ -64,6 +66,7 @@ CREATE TABLE `auth_item_child` (
 # Data for table "auth_item_child"
 #
 
+INSERT INTO `auth_item_child` VALUES ('admin','permisos_admin'),('permisos_admin','/*'),('permisos_admin','/admin/*'),('permisos_admin','/admon/*'),('permisos_admin','permisos_usuario'),('permisos_invitado','/site/index'),('permisos_usuario','/site/*'),('usuario','permisos_usuario');
 
 #
 # Structure for table "auth_rule"
@@ -146,13 +149,13 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_unique_username` (`username`),
   UNIQUE KEY `user_unique_email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 #
 # Data for table "user"
 #
 
-INSERT INTO `user` VALUES (1,'jesus','jesusrey85@gmail.com','$2y$10$OIEviplAQJXk/wX1hyEr1ObetaG1/KI9mXUsSGTa6NNjdY4vFEMmO','kR_JkXN9ruYZbBZF8L-FfSsroT3W2p3G',NULL,1487786453,NULL,NULL,'192.168.10.1',1487786418,1487786418,0,1487868171,10),(2,'user','jesus@gmail.com','$2y$10$94MR62lNDxw6bPohoTsNlu2KGN67s02ykWitNydUqJrNW.6KL.IVS','vij0Psktegvni_JPYJYRtLz08f6hwIWo',NULL,1487787034,NULL,NULL,'192.168.10.1',1487786965,1487786965,0,NULL,10),(3,'test','j@j.com','$2y$10$ZcUtq09zDxAY7Cs.8/N4Len94vdoeTiOpO/XbZuvlhzAAf0sZD.ge','J5l07mfVcN76kjJOJKlfDEcLh0h2zVfC',NULL,1487871943,NULL,NULL,'192.168.10.1',1487871943,1487871943,0,NULL,10);
+INSERT INTO `user` VALUES (1,'jesus','jesusrey85@gmail.com','$2y$10$OIEviplAQJXk/wX1hyEr1ObetaG1/KI9mXUsSGTa6NNjdY4vFEMmO','kR_JkXN9ruYZbBZF8L-FfSsroT3W2p3G',NULL,1487786453,NULL,NULL,'192.168.10.1',1487786418,1487786418,0,1487937842,10),(2,'user','jesus@gmail.com','$2y$10$94MR62lNDxw6bPohoTsNlu2KGN67s02ykWitNydUqJrNW.6KL.IVS','vij0Psktegvni_JPYJYRtLz08f6hwIWo',NULL,1487787034,NULL,NULL,'192.168.10.1',1487786965,1487786965,0,1487937315,10),(3,'test','j@j.com','$2y$10$ZcUtq09zDxAY7Cs.8/N4Len94vdoeTiOpO/XbZuvlhzAAf0sZD.ge','DaFGi-6ABMO7ID0dUm4o6RD8VRG0u7XN',NULL,1487871943,NULL,NULL,'192.168.10.1',1487871943,1487871943,0,1487937369,10);
 
 #
 # Structure for table "token"

@@ -52,6 +52,16 @@ $config = [
         ],
         'authManager' => [
             'class' => 'yii\rbac\DbManager', // or use 'yii\rbac\DbManager'
+            'defaultRoles' => ['invitado'],
+            // por lo que he descubierto hasta el momento:
+            /*
+             * rbac outh
+             * por defecto va a buscar en la tabla de items el rol por defecto que tenemos aquí. si no estamos logados.
+             * si estamos logado buscará el rol/permisos del nombre de rol con el que estemos logados.
+             * p.e:
+             *  si nuestro rol es admin > cogeremos los accesos de admin
+             *  si nadie esta logado, cogeremos los permisos de invitado
+             * */
         ],
 
         'errorHandler' => [
@@ -108,13 +118,15 @@ $config = [
     'as access' => [
         'class' => 'mdm\admin\components\AccessControl',
         'allowActions' => [
-            'site/*',
-            'admin/*',
-            'user/*',
+            // estas acciones se asignan en rbac admin a cada rol
+
+            // 'site/*',
+            // 'admin/*',
+            // 'user/*',
             'debug/*',
             'gii/*',
-            'admon/*',
-            'some-controller/some-action',
+            // 'admon/*',
+            // 'some-controller/some-action',
             // The actions listed here will be allowed to everyone including guests.
             // So, 'admin/*' should not appear here in the production, of course.
             // But in the earlier stages of your development, you may probably want to
