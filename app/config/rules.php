@@ -30,6 +30,7 @@ return [
     // 'user/admin/create'=>'admon/user/admin/create',
     // 'user/admin/index'=>'admon/user/admin/index',
 
+
 /*
     '<language:\w+>/'=>'/site/index',
     '<language:\w+>/<controller>' => '<controller>',

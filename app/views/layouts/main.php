@@ -10,6 +10,8 @@ use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
+use mdm\admin\components\MenuHelper;
+
 FrontAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -34,6 +36,7 @@ FrontAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
+    /*
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
@@ -58,6 +61,14 @@ FrontAsset::register($this);
         ],
     ]);
     NavBar::end();
+    */
+
+    echo Nav::widget([
+        'options' => ['class' => 'navbar-nav navbar-right'],
+        'items' => MenuHelper::getAssignedMenu(Yii::$app->user->id)
+    ]);
+    NavBar::end();
+
     ?>
 
     <div class="container">

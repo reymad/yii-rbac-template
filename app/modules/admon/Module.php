@@ -73,7 +73,7 @@ class Module extends \yii\base\Module
         // custom initialization code goes here
         $this->modules = [
             'user' => [
-                'class' => 'dektrium\user\Module',
+                'class' => 'app\modules\user\Module',
                 'admins' => ['admin','jesus'],
             ],
             'admin' => [

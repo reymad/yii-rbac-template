@@ -6,13 +6,17 @@ use app\components\RbacConf;
 use mdm\admin\components\DbManager;
 use Yii;
 
-class User extends \dektrium\user\models\User {
+use \dektrium\user\models\User as BaseUser;// extendemos de la api
+
+class User extends BaseUser {
 
     /*
      * to add
      * */
     public $status;
     public $password_reset_token;
+
+    public $random = 'kjahfdkjsahdfkj';
 
 
     public function getRoleName()

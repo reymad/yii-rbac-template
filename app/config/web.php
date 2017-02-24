@@ -17,6 +17,24 @@ $config = [
         'user' => [
             'class' => 'dektrium\user\Module',
             'admins' => ['admin','jesus'],
+            // usamos my modelo usuario que extiende de la api yii2-user
+            'modelMap' => [
+                'User' => 'app\models\User',
+            ],
+            // tambien podemos hacer esto
+            /*
+            'modelMap' => [
+                'User' => [
+                    'class' => 'app\models\User',
+                    'on user_create_init' => function () {
+                        // do you magic
+                    },
+                    'as foo' => [
+                        'class' => 'Foo',
+                    ],
+                ],
+            ],
+            */
             // rest of config inside Admon module
         ],
         'admin' => [
@@ -118,7 +136,7 @@ $config = [
     'as access' => [
         'class' => 'mdm\admin\components\AccessControl',
         'allowActions' => [
-            // estas acciones se asignan en rbac admin a cada rol
+            // estas acciones e
 
             // 'site/*',
             // 'admin/*',
