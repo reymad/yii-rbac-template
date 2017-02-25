@@ -9,6 +9,8 @@
 namespace app\components;
 
 use Yii;
+use yii\bootstrap\Html;
+use yii\bootstrap\Nav;
 use yii\i18n\Formatter;
 use yii\mail\BaseMailer;
 
@@ -222,6 +224,36 @@ class Helpers
         $size = array('B','kB','MB','GB','TB','PB','EB','ZB','YB');
         $factor = floor((strlen($bytes) - 1) / 3);
         return sprintf("%.2f", $bytes / pow(1024, $factor)) . @$size[$factor];
+    }
+
+
+    public static function getGuestMenu(){
+
+        return
+            Nav::widget([
+                'options' => ['class' => 'navbar-nav navbar-right'],
+                'items' => [
+                    ['label' => 'Home', 'url' => ['/site/index']],
+                    ['label' => 'About', 'url' => ['/site/about']],
+                    ['label' => 'Contact', 'url' => ['/site/contact']],
+                    Yii::$app->user->isGuest ? (
+                    ['label' => 'SignUp', 'url' => ['/user/register']]
+                    ) : (''),
+                    Yii::$app->user->isGuest ? (
+                    ['label' => 'Login', 'url' => ['/user/login']]
+                    ) : (
+                        '<li>'
+                        . Html::beginForm(['/site/logout'], 'post')
+                        . Html::submitButton(
+                            'Logout (' . Yii::$app->user->identity->username . ')',
+                            ['class' => 'btn btn-link logout']
+                        )
+                        . Html::endForm()
+                        . '</li>'
+                    )
+                ],
+            ]);
+
     }
 
 }

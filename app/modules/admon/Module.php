@@ -93,16 +93,19 @@ class Module extends \yii\base\Module
                         'idField' => 'id',
                         'usernameField' => 'username',
                         // 'fullnameField' => 'profile.name',
+                        /*
                         'extraColumns' => [
                             [
                                 'attribute' => 'status',
-                                'label' => 'Status',
+                                'label' => 'Role',
                                 'value' => function($model, $key, $index, $column) {
-                                    return $model->status;
+                                    return $model->get;
                                 },
                             ],
                         ],
+                        */
                         // 'searchClass' => 'app\models\UserSearch'
+                        // 'searchClass' => 'dektrium\user\models\UserSearch'
                     ],
                 ],
             ]

@@ -5,6 +5,7 @@
  * Date: 24/02/2017
  * Time: 16:53
  */
+use app\components\Helpers;
 use mdm\admin\components\MenuHelper;
 use yii\bootstrap\Html;
 use yii\bootstrap\Nav;
@@ -23,29 +24,7 @@ NavBar::begin([
 if(Yii::$app->user->isGuest){
 
     /* menu guest */
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ? (
-            ['label' => 'SignUp', 'url' => ['/user/register']]
-            ) : (''),
-            Yii::$app->user->isGuest ? (
-            ['label' => 'Login', 'url' => ['/user/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post')
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
-    ]);
+    echo Helpers::getGuestMenu();
 
 }else{
 

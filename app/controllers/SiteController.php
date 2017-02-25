@@ -111,7 +111,11 @@ class SiteController extends MyController
     public function actionIndex()
     {
 
+        // siempre que inicialicemos cadenas así, el MyController las publicará en js
         $this->_translations['app.hola-mundo']  = Yii::t('app','Hola Mundo!!');
+
+        // acceder a relacion
+        // var_dump(Yii::$app->user->identity->posts); exit;
 
         return $this->render('index');
     }

@@ -11,6 +11,8 @@ $(document).ready(function(){
 
     tellWidth($('.tellWidth'));
 
+    console.log('hola yoseff');
+
     //
     var to = setInterval(function(){
 

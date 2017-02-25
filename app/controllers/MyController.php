@@ -8,6 +8,8 @@
 
 namespace app\controllers;
 
+use app\models\User;
+use app\rbac\RbacConf;
 use Yii;
 use yii\helpers\Url;
 use yii\web\View;
@@ -42,7 +44,6 @@ class MyController extends Controller
     {
         parent::init();
 
-
         // inicializamos estas variables js SIEMPRE!
         $globalJsVar  = "\n var " . self::YIIJS . " = {}; ";
         /*
@@ -51,15 +52,19 @@ class MyController extends Controller
          */
         $globalHead   = [
             'url'=>[
-                'current_url' => Url::base(true) . Yii::$app->request->url,
+                'current_url' => Url::base(true) . \Yii::$app->request->url,
                 // add here
             ],
             'usuario'=>[
-                'guest' => Yii::$app->user->isGuest,
+                'guest' => \Yii::$app->user->isGuest,
                 // add here
             ],
             'entorno'=>[
                  'env' => YII_ENV,
+            ],
+            'csrf'=>[
+                'name'=> Yii::$app->request->csrfParam,
+                'token'=> Yii::$app->request->csrfToken,
             ],
             // add here
         ];

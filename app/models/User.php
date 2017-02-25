@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-use app\components\RbacConf;
+use app\rbac\RbacConf;
 use mdm\admin\components\DbManager;
 use Yii;
 
@@ -16,9 +16,14 @@ class User extends BaseUser {
     public $status;
     public $password_reset_token;
 
-    public $random = 'kjahfdkjsahdfkj';
+    public $random = 'KJADSFASF7WAELA';
 
 
+    // \Yii::$app->user->can('createPost')
+
+    /*
+     * Devuelve nombre del role del user
+     * */
     public function getRoleName()
     {
         $roles = Yii::$app->authManager->getRolesByUser($this->id);
@@ -45,5 +50,14 @@ class User extends BaseUser {
         $auth->assign($role, $this->id);
 
     }
+
+    /*
+     * Relations
+     * */
+    public function getPosts()
+    {
+        return $this->hasMany(Post::className(), ['created_by' => 'id']);
+    }
+
 
 }
