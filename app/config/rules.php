@@ -21,12 +21,13 @@ return [
     '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
     '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
 
-    'user/<controller:\w+>/<id:\d+>' => 'admon/user/<controller>/view',
-    'user/<controller:\w+>/<action:\w+(-\w+)*>/<id:\d+>' => 'admon/user/<controller>/<action>',
-    'user/<controller:\w+>/<action:\w+(-\w+)*>' => 'admon/user/<controller>/<action>',
+    // 'user/<controller:\w+>/<id:\d+>' => 'admon/user/<controller>/view',
+    // 'user/<controller:\w+>/<action:\w+(-\w+)*>/<id:\d+>' => 'admon/user/<controller>/<action>',
+    // 'user/<controller:\w+>/<action:\w+(-\w+)*>' => 'admon/user/<controller>/<action>',
 
     // 'user/admin/update-profile/<id:\d+>' => 'admon/user/<controller>/<action>',
-    // estos funcionan
+
+    // estos funcionan // lo comenté para el twitter login
     // 'user/admin/create'=>'admon/user/admin/create',
     // 'user/admin/index'=>'admon/user/admin/index',
 

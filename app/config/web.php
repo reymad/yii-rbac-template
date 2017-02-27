@@ -47,6 +47,31 @@ $config = [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'oY1yy9HRy0o3a7umOB6xX1f5nkcKmjb6',
         ],
+        'authClientCollection' => [
+            'class'   => 'yii\authclient\Collection',//\yii\authclient\Collection::className(),
+            'clients' => [
+                // here is the list of clients you want to use
+                // you can read more in the "Available clients" section
+                'twitter' => [
+                    'class'          => 'dektrium\user\clients\Twitter',
+                    'consumerKey'    => 'G4vYqApDAi5Sk2Xz1BOzu0zVo',
+                    'consumerSecret' => 'in6MmJ8T28ipETdPAt7Wl4lfCjBHaqVFhVveVzV6IHW5AFGsBI',
+                ],
+/*
+                'google' => [
+                    'class' => 'yii\authclient\clients\GoogleOpenId'
+                ],
+*/
+
+            ],
+        ],
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                    '@dektrium/user/views' => '@app/views/user'
+                ],
+            ],
+        ],
         /*
         'formatter'   => [
             'class'    => 'yii\i18n\Formatter',
@@ -143,6 +168,11 @@ $config = [
             'user/*',
             'debug/*',
             'gii/*',
+
+            // ouath connect
+            'user/registration/connect/*',
+            'admon/user/registration/connect/*',
+
             // 'admon/*',
             // 'some-controller/some-action',
             // The actions listed here will be allowed to everyone including guests.
