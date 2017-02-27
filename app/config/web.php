@@ -57,11 +57,16 @@ $config = [
                     'consumerKey'    => 'G4vYqApDAi5Sk2Xz1BOzu0zVo',
                     'consumerSecret' => 'in6MmJ8T28ipETdPAt7Wl4lfCjBHaqVFhVveVzV6IHW5AFGsBI',
                 ],
-/*
+                /*
                 'google' => [
-                    'class' => 'yii\authclient\clients\GoogleOpenId'
+                    'class' => 'yii\authclient\clients\Google'
                 ],
-*/
+                */
+                'facebook' => [
+                    'class'        => 'dektrium\user\clients\Facebook',
+                    'clientId'     => '204739013342036',
+                    'clientSecret' => 'e168e60bd6a49b60e48572eb019dddcf',
+                ],
 
             ],
         ],
