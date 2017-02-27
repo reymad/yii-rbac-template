@@ -34,8 +34,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 ]); ?>
 
                 <?= Connect::widget([
-                    'baseAuthUrl' => ['/user/security/auth']
+                    'baseAuthUrl' => ['/user/security/auth'],
+                    'id' => 'social-register',
+                    'options' => [
+                        'class' => 'text-center',
+                    ],
                 ]) ?>
+
 
                 <?= $form->field($model, 'username') ?>
 
