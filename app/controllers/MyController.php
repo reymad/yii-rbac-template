@@ -44,6 +44,12 @@ class MyController extends Controller
     {
         parent::init();
 
+        // var_dump(Yii::$app->user->accounts);
+
+        if(Yii::$app->request->get('flush')){
+            Yii::$app->cache->flush();
+        }
+
         // inicializamos estas variables js SIEMPRE!
         $globalJsVar  = "\n var " . self::YIIJS . " = {}; ";
         /*

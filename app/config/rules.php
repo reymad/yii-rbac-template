@@ -28,8 +28,8 @@ return [
     // 'user/admin/update-profile/<id:\d+>' => 'admon/user/<controller>/<action>',
 
     // estos funcionan // lo comenté para el twitter login
-    // 'user/admin/create'=>'admon/user/admin/create',
-    // 'user/admin/index'=>'admon/user/admin/index',
+    'user/admin/create'=>'admon/user/admin/create',
+    'user/admin/index'=>'admon/user/admin/index',
 
 
 /*

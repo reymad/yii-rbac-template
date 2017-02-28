@@ -15,6 +15,16 @@ $this->title = 'My Yii Application';
 
         <p class="lead">Hola Nen!</p>
 
+
+        <?php
+            echo TwitterPlugin::widget([
+                'type' => TwitterPlugin::TIMELINE,
+                // 'screenName' => '<picked-from-module-or-can-be-set-here>',
+                'settings' => ['widget-id' => '<your-widget-id>'],
+                'options' => ['height'=>'350', 'width'=>'500']
+            ]);
+        ?>
+
     </div>
 
     <div class="body-content">

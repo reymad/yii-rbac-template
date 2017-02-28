@@ -30,7 +30,8 @@
         "scotthuangzl/yii2-google-chart": "dev-master",
         "thiagotalma/yii2-notify": "dev-master",
         "dektrium/yii2-user": "^0.9.12",
-        "mdmsoft/yii2-admin": "2.x-dev"
+        "mdmsoft/yii2-admin": "2.x-dev",
+        "kartik-v/yii2-social": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",

@@ -72,11 +72,12 @@ class SiteController extends MyController
      * @param \yii\authclient\ClientInterface $client
      * @return boolean|\yii\web\Response
      */
+
     /*
     public function authSuccess($client)
     {
 
-        $userAttributes = $client->getUserAttributes();
+        //$userAttributes = $client->getUserAttributes();
 
         switch (get_class($client)) {
             case Facebook::className():
@@ -95,7 +96,6 @@ class SiteController extends MyController
             'userAttributes' => $userAttributes,
             'client'         => $clientName,
         ];
-
         $response->content = $view->renderFile(Yii::getAlias('@app/views/site/social-redirect.php'), $viewData);
 
         return $response;
@@ -113,9 +113,39 @@ class SiteController extends MyController
 
         // siempre que inicialicemos cadenas así, el MyController las publicará en js
         $this->_translations['app.hola-mundo']  = Yii::t('app','Hola Mundo!!');
+        // var_dump(Yii::$app->params['social_client']); exit;
 
-        // acceder a relacion
-        // var_dump(Yii::$app->user->identity->posts); exit;
+
+        // de momento solo he encontrado esta manera de acceder a la api de la social con la que nos hemos logado
+        // funciona
+        /*
+         * Ok, si estoy logado en twitter, con esto accedo a la api
+         * */
+        if(isset(Yii::$app->user->identity->accounts['twitter'])){
+            $client = Yii::$app->authClientCollection->getClient('twitter');
+            // var_dump($client->api('statuses/home_timeline.json', 'GET'));
+        }
+        /*
+         * Ok, si estoy logado en fb, con esto accedo a algunos de los campos
+         * */
+        if(isset(Yii::$app->user->identity->accounts['facebook'])){
+            $client = Yii::$app->authClientCollection->getClient('facebook');
+            // var_dump($client->api('/me?fields=id,name,picture,about,birthday,cover,education', 'GET'));
+        }
+
+
+        /* kartik extension */
+        /*
+        $social = Yii::$app->getModule('social');
+        $social->facebook = [
+            'appId' => 'YOUR_APP_ID',
+            'secret' => 'YOUR_SECRET',
+            // any other custom settings
+        ];
+        // fetch the facebook sdk api
+        $facebook = $social->getFbApi();
+        */
+
 
         return $this->render('index');
     }

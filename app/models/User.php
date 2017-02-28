@@ -18,7 +18,10 @@ class User extends BaseUser {
 
     public $random = 'KJADSFASF7WAELA';
 
+    public $soccialClient;
 
+
+    // rbac check for rules and accesses
     // \Yii::$app->user->can('createPost')
 
     /*
@@ -49,6 +52,10 @@ class User extends BaseUser {
         $role = $auth->getRole(RbacConf::ROLE_USUARIO);
         $auth->assign($role, $this->id);
 
+    }
+
+    public function setSoccialClient($client){
+        $this->soccialClient = $client;
     }
 
     /*

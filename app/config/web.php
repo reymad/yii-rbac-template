@@ -2,6 +2,14 @@
 
 $params = require(__DIR__ . '/params.php');
 
+// plase this code somewhere in your config files (bootstrap.php in case of using advanced app template, web.php in case
+// of using basic app template
+
+use dektrium\user\controllers\SecurityController;
+use dektrium\user\events\AuthEvent;
+use yii\base\Event;
+
+
 $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
@@ -16,7 +24,8 @@ $config = [
         /* estos son sub-modules de admon */
         'user' => [
             'class' => 'dektrium\user\Module',
-            'admins' => ['admin','jesus'],
+            'admins' => ['admin','jesus','rey_mad'],
+            // 'admins' => ['*'],
             // usamos my modelo usuario que extiende de la api yii2-user
             'modelMap' => [
                 'User' => 'app\models\User',
@@ -222,5 +231,31 @@ if (YII_ENV_DEV) {
         */
     ];
 }
+
+Event::on(SecurityController::class, SecurityController::EVENT_AFTER_AUTHENTICATE, function (AuthEvent $e) {
+    // if user account was not created we should not continue
+    if ($e->account->user === null) {
+        return;
+    }
+
+    // var_dump($e); exit;
+
+    // we are using switch here, because all networks provide different sets of data
+    switch ($e->client->getName()) {
+        case 'twitter':
+            // ($e->client->api()) Yii::$app->user->(identity)->clients['twitter']->api($apiSubUrl, $method = 'GET', $data = [], $headers = [])
+            break;
+        case 'facebook':
+            $e->account->user->profile->updateAttributes([
+                'name' => $e->client->getUserAttributes()['name'],
+            ]);
+            break;
+        case 'vkontakte':
+            // some different logic
+    }
+
+    // after saving all user attributes will be stored under account model
+    // Yii::$app->user->accounts['facebook']->decodedData;
+});
 
 return $config;
