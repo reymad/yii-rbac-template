@@ -11,14 +11,30 @@ namespace app\components;
 use Yii;
 use yii\bootstrap\Html;
 use yii\bootstrap\Nav;
-use yii\i18n\Formatter;
-use yii\mail\BaseMailer;
 
 class Helpers
 {
 
     public static function test(){
         echo 'component loaded correctlty!';
+    }
+
+    public static function getSocialConnected(){
+
+        if(!Yii::$app->user->isGuest){
+
+            if(isset(Yii::$app->user->identity->accounts['twitter'])){
+                return 'twitter';
+            }
+            if(isset(Yii::$app->user->identity->accounts['facebook'])){
+                return 'facebook';
+            }
+            // ... añade según tengamos mas conexiones a rrss
+
+        }
+
+        return false;
+
     }
 
     public static function esNif($cif)
@@ -232,6 +248,7 @@ class Helpers
         return
             Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],
+                'encodeLabels' => false,
                 'items' => [
                     ['label' => 'Home', 'url' => ['/site/index']],
                     ['label' => 'About', 'url' => ['/site/about']],
@@ -245,7 +262,7 @@ class Helpers
                         '<li>'
                         . Html::beginForm(['/site/logout'], 'post')
                         . Html::submitButton(
-                            'Logout (' . Yii::$app->user->identity->username . ')',
+                            'Logout (' . $socialIcon . Yii::$app->user->identity->username . ')',
                             ['class' => 'btn btn-link logout']
                         )
                         . Html::endForm()

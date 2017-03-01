@@ -10,6 +10,8 @@ use dektrium\user\events\AuthEvent;
 use yii\base\Event;
 
 
+// var_dump($params['social']['twitter']['appId']); exit;
+
 $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
@@ -49,7 +51,45 @@ $config = [
         'admin' => [
             'class' => 'mdm\admin\Module',
             // rest of config inside Admon module
+        ],
+        // kartik social
+        'social' => [
+            // the module class
+            'class' => 'kartik\social\Module',
+
+            // the global settings for the Disqus widget
+            'disqus' => [
+                'settings' => ['shortname' => 'DISQUS_SHORTNAME'] // default settings
+            ],
+            // the global settings for the Twitter plugin widget
+            'twitter' => [
+                'screenName' => 'TWITTER_SCREEN_NAME'
+            ],
+            // the global settings for the Facebook plugins widget
+            'facebook' => [
+                'appId' => $params['social']['facebook']['appId'],
+                'secret' => $params['social']['facebook']['secret'],
+            ],
+            /*
+            // the global settings for the Google+ Plugins widget
+            'google' => [
+                'clientId' => 'GOOGLE_API_CLIENT_ID',
+                'pageId' => 'GOOGLE_PLUS_PAGE_ID',
+                'profileId' => 'GOOGLE_PLUS_PROFILE_ID',
+            ],
+            // the global settings for the Google Analytics plugin widget
+            'googleAnalytics' => [
+                'id' => 'TRACKING_ID',
+                'domain' => 'TRACKING_DOMAIN',
+            ],
+            // the global settings for the GitHub plugin widget
+            'github' => [
+                'settings' => ['user' => 'GITHUB_USER', 'repo' => 'GITHUB_REPO']
+            ],
+            */
         ]
+        // your other modules
+
     ],
     'components' => [
         'request' => [
@@ -63,8 +103,8 @@ $config = [
                 // you can read more in the "Available clients" section
                 'twitter' => [
                     'class'          => 'dektrium\user\clients\Twitter',
-                    'consumerKey'    => 'G4vYqApDAi5Sk2Xz1BOzu0zVo',
-                    'consumerSecret' => 'in6MmJ8T28ipETdPAt7Wl4lfCjBHaqVFhVveVzV6IHW5AFGsBI',
+                    'consumerKey'    => $params['social']['twitter']['appId'],
+                    'consumerSecret' => $params['social']['twitter']['secret'],
                 ],
                 /*
                 'google' => [
@@ -73,8 +113,8 @@ $config = [
                 */
                 'facebook' => [
                     'class'        => 'dektrium\user\clients\Facebook',
-                    'clientId'     => '204739013342036',
-                    'clientSecret' => 'e168e60bd6a49b60e48572eb019dddcf',
+                    'clientId'     =>  $params['social']['facebook']['appId'],
+                    'clientSecret' =>  $params['social']['facebook']['secret'],
                 ],
 
             ],

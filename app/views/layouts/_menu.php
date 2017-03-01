@@ -6,6 +6,7 @@
  * Time: 16:53
  */
 use app\components\Helpers;
+use kartik\icons\Icon;
 use mdm\admin\components\MenuHelper;
 use yii\bootstrap\Html;
 use yii\bootstrap\Nav;
@@ -24,18 +25,32 @@ NavBar::begin([
 if(Yii::$app->user->isGuest){
 
     /* menu guest */
-    echo Helpers::getGuestMenu();
+
+    echo Helpers::getGuestMenu();// pasamos el context para Icons api
 
 }else{
 
-    // menu logado
+    /* menu logado */
+
+    /*
+     // ejemplo
+    Icon::map($this);
+    echo Icon::showStack('square-o', 'twitter', ['class'=>'fa-lg']);
+    */
+
+    // si estamos logados por red social pintamos iconito
+    $social = Helpers::getSocialConnected();
+    Icon::map($this);
+    $socialIcon = (!$social) ? '' : Icon::show($social, ['class'=>''/*'fa-lg'*/,'style'=>'color:#fff;'] );
+
+    // var_dump($socialIcon); exit;
 
     // logout va por form, lo excluimos de rbac
     $menu = MenuHelper::getAssignedMenu(Yii::$app->user->id);
     $logoutItem[] = '<li>'
                         . Html::beginForm(['/site/logout'], 'post')
                         . Html::submitButton(
-                            'Logout (' . Yii::$app->user->identity->username . ')',
+                            'Logout (' . trim($socialIcon) . trim(Yii::$app->user->identity->username) . ')',
                             ['class' => 'btn btn-link logout']
                         )
                         . Html::endForm()
@@ -44,7 +59,8 @@ if(Yii::$app->user->isGuest){
 
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' =>$menu,
+        'items' => $menu,
+        'encodeLabels' => false,
     ]);
 }
 

@@ -4,6 +4,8 @@
 /* @var $content string */
 
 use app\assets\FrontAsset;
+use app\components\Helpers;
+use kartik\icons\Icon;
 use mdm\admin\components\MenuHelper;
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
@@ -38,12 +40,17 @@ FrontAsset::register($this);
         ],
     ]);
 
+    // si estamos logados por red social pintamos iconito
+    $social = Helpers::getSocialConnected();
+    Icon::map($this);
+    $socialIcon = (!$social) ? '' : Icon::show($social, ['class'=>''/*'fa-lg'*/,'style'=>'color:#fff;'] );
+
     // logout va por form, lo excluimos de rbac
     $menu = MenuHelper::getAssignedMenu(Yii::$app->user->id);
     $logoutItem[] = '<li>'
         . Html::beginForm(['/site/logout'], 'post')
         . Html::submitButton(
-            'Logout (' . Yii::$app->user->identity->username . ')',
+            'Logout (' . trim($socialIcon) . trim(Yii::$app->user->identity->username) . ')',
             ['class' => 'btn btn-link logout']
         )
         . Html::endForm()
