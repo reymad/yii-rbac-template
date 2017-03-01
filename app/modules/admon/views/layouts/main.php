@@ -42,7 +42,7 @@ FrontAsset::register($this);
 
     // si estamos logados por red social pintamos iconito
     $social = Helpers::getSocialConnected();
-    Icon::map($this);
+    Icon::map($this,Icon::FA);
     $socialIcon = (!$social) ? '' : Icon::show($social, ['class'=>''/*'fa-lg'*/,'style'=>'color:#fff;'] );
 
     // logout va por form, lo excluimos de rbac
