@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\MyActiveRecord;
 use Yii;
 use app\models\Post;
 use app\models\search\PostSearch;
@@ -124,7 +125,10 @@ class PostController extends MyController
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        // $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $model->status = MyActiveRecord::STATUS_DELETED;
+        $model->save();
 
         return $this->redirect(['index']);
     }

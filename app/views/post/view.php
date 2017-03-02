@@ -28,14 +28,25 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'post_id',
+            // 'post_id',
             'title',
             'description:ntext',
             'fichero_id',
             'lang',
             'created_by',
-            'created_at',
-            'updated_at',
+            [
+                'attribute' => 'created_at',
+                'value' => function ($model) {
+                    return $model->formatDateI18n('created_at',Yii::$app->language);
+                },
+            ],
+            [
+                'attribute' => 'updated_at',
+                'value' => function ($model) {
+                    // return $model->formatDate('updated_at',Yii::$app->language);
+                    return $model->formatDateI18n('created_at',Yii::$app->language);
+                },
+            ],
             'status',
         ],
     ]) ?>

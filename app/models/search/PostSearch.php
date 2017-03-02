@@ -2,6 +2,7 @@
 
 namespace app\models\search;
 
+use app\models\MyActiveRecord;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
@@ -65,6 +66,10 @@ class PostSearch extends Post
             'updated_at' => $this->updated_at,
             'status' => $this->status,
         ]);
+
+        if(!Yii::$app->user->identity->getIsAdmin()){
+            $query->andFilterWhere(['status' => MyActiveRecord::STATUS_ACTIVE]);
+        }
 
         // exit;
 
