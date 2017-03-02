@@ -21,7 +21,7 @@ nav#main-header{
 
     font-size: $header-font-size;
     color: $color-links-header-dark;
-    @include transition(color .8s ease);
+    @include transition(color $default-ease ease);
     &:hover{
       color: $color-links-header !important;
     }
@@ -40,7 +40,7 @@ nav#main-header{
       a{
         padding-top: 20px;
         color: $color-links-header-dark;
-        @include transition(color .8s ease);
+        @include transition(color $default-ease ease);
         &:hover{
           color: $color-links-header;
         }

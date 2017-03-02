@@ -5,6 +5,7 @@
 
 var intervalCounter = 0;
 
+YIIJS = (typeof YIIJS != 'undefined') ? YIIJS : {};
 
 /*
  * Fin globals js

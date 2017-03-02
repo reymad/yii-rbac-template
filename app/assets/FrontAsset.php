@@ -30,6 +30,8 @@ class FrontAsset extends AssetBundle
 
     public function init(){
 
+        // var_dump('yeahhhhhhhhhhhh');exit;
+
         // distinguimos las dependencias por entornos
         if(YII_ENV=='prod'){
             $this->js[]  = 'assets/dist/js/script.min.js';

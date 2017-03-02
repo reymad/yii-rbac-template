@@ -22,7 +22,7 @@ FrontAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body class="site">
+<body class="site front">
 <?php $this->beginBody() ?>
 
 <div class="wrap">
