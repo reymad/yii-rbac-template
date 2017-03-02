@@ -194,7 +194,7 @@ body.front {
       -o-transition: color 0.6s ease;
       transition: color 0.6s ease; }
       .site nav#main-header a:hover, .site nav#main-header button:hover {
-        color: #15AC9B !important; }
+        color: #15AC9B; }
       .site nav#main-header a.navbar-brand, .site nav#main-header button.navbar-brand {
         font-size: 24px;
         color: #15AC9B; }
@@ -216,8 +216,22 @@ body.front {
     .site nav#main-header.navbar-inverse .navbar-nav > .active > a, .site nav#main-header.navbar-inverse .navbar-nav > .active > a:hover, .site nav#main-header.navbar-inverse .navbar-nav > .active > a:focus {
       color: #15AC9B;
       background-color: transparent; }
+    .site nav#main-header.navbar-inverse .navbar-toggle {
+      border-color: #15AC9B; }
+      .site nav#main-header.navbar-inverse .navbar-toggle .icon-bar {
+        background-color: #15AC9B; }
+    .site nav#main-header.navbar-inverse .navbar-toggle:hover,
+    .site nav#main-header.navbar-inverse .navbar-toggle:focus {
+      background-color: #009092; }
+      .site nav#main-header.navbar-inverse .navbar-toggle:hover[aria-expanded="false"],
+      .site nav#main-header.navbar-inverse .navbar-toggle:focus[aria-expanded="false"] {
+        background-color: #fff; }
   .site .footer {
     height: 60px;
     background-color: #f5f5f5;
     border-top: 1px solid #ddd;
     padding-top: 20px; }
+
+@media (max-width: 768px) {
+  .site nav#main-header .container {
+    padding: 0 10px; } }

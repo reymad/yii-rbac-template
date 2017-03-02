@@ -23,7 +23,7 @@ nav#main-header{
     color: $color-links-header-dark;
     @include transition(color $default-ease ease);
     &:hover{
-      color: $color-links-header !important;
+      color: $color-links-header;
     }
     &.navbar-brand{
       font-size: 24px;
@@ -48,6 +48,7 @@ nav#main-header{
     }
   }
 
+  // overwrites
   .nav li > form > button.logout {
     padding: 19px;
   }
@@ -56,6 +57,31 @@ nav#main-header{
     color: $color-links-header;
     background-color: transparent;
   }
+
+  &.navbar-inverse{
+
+    .navbar-toggle{
+
+      border-color: $color-links-header;
+
+      .icon-bar {
+        background-color: $color-links-header;
+      }
+
+    }
+
+  }
+  &.navbar-inverse .navbar-toggle:hover,
+  &.navbar-inverse .navbar-toggle:focus{
+
+    background-color: $color-corp-dark;
+
+    &[aria-expanded="false"]{
+      background-color: $color-white;
+    }
+
+  }
+
 
 }
 
