@@ -50,7 +50,7 @@ gulp.task('sass', function() {
     gulp.src('app/theme/scss/**/*.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest('app/theme/pub/css/'))
-        .pipe( notify( { message: 'Sass is being watched...' } ) );
+        // .pipe( notify( { message: 'Sass is being watched...' } ) );
 });
 // Styles // funciona concat y min
 gulp.task( 'styles', function() {

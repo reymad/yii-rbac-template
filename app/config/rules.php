@@ -17,6 +17,8 @@ return [
     //'<controller:[\w\-]+>/<action:[\w\-]+>' => '<controller>/<action>',
     // '<action:[\w\-]+>' => 'site/<action>',
 
+    // '/user/register' => 'site/register',
+
     '<controller:\w+>/<id:\d+>' => '<controller>/view',
     '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
     '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
@@ -30,6 +32,7 @@ return [
     // estos funcionan // lo comenté para el twitter login
     'user/admin/create'=>'admon/user/admin/create',
     'user/admin/index'=>'admon/user/admin/index',
+
 
 
 /*

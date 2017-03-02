@@ -9,6 +9,8 @@ $fuente_italic: 'Futura LT W01 Medium Oblique';
 $fuente_medium: 'Futura LT W01 Medium';
 */
 
+$ruta-images: '/assets/dist/images/';
+
 $color-white: #fff;
 $color-black: #000;
 $color-link: #9d9d9d;
@@ -17,5 +19,17 @@ $color-grey-dark: #777;
 $color-rojo: red;
 $color-verde: green;
 $color-amarillo: yellow;
+
+// header
+// $color-links-header-dark: #30383B;//#FC6153;
+$color-links-header: #15AC9B;// #FE5B35;
+$color-corp: #15AC9B;// #FE5B35;
+$color-corp-dark: #009092;// #FE5B35;
+$color-links-header-dark: #525252;//#FC6153;
+$color-font: #525252;//#FC6153;
+$color-font-light: #ccc;//#FC6153;
+
+
+$header-font-size: 15px;
 
 

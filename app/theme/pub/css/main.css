@@ -97,6 +97,25 @@ $fuente_bold: 'Futura LT W01 X Bold Condensed';
 $fuente_italic: 'Futura LT W01 Medium Oblique';
 $fuente_medium: 'Futura LT W01 Medium';
 */
+body {
+  margin: 0;
+  color: #525252;
+  font-family: "Source Sans Pro",sans-serif;
+  font-size: 16px;
+  background: url("/assets/dist/images/header-top.jpg") repeat-x #fff;
+  padding-top: 10px; }
+
+a {
+  color: #15AC9B;
+  -webkit-transition: color 0.8s ease;
+  -moz-transition: color 0.8s ease;
+  -ms-transition: color 0.8s ease;
+  -o-transition: color 0.8s ease;
+  transition: color 0.8s ease; }
+  a:hover {
+    color: #009092;
+    text-decoration: none; }
+
 .site {
   /* header partial | comment */
   /*
@@ -149,6 +168,45 @@ $fuente_medium: 'Futura LT W01 Medium';
     @extend %clearfix;
   }
   */ }
+  .site nav#main-header {
+    background-color: #fff;
+    border: 0;
+    border-bottom: 1px solid #15AC9B;
+    top: 10px;
+    height: 60px; }
+    .site nav#main-header .container {
+      width: 100% !important;
+      padding: 0 40px; }
+    .site nav#main-header a {
+      padding-top: 20px; }
+    .site nav#main-header a, .site nav#main-header i, .site nav#main-header button, .site nav#main-header .social-icon {
+      font-size: 15px;
+      color: #525252;
+      -webkit-transition: color 0.8s ease;
+      -moz-transition: color 0.8s ease;
+      -ms-transition: color 0.8s ease;
+      -o-transition: color 0.8s ease;
+      transition: color 0.8s ease; }
+      .site nav#main-header a:hover, .site nav#main-header i:hover, .site nav#main-header button:hover, .site nav#main-header .social-icon:hover {
+        color: #15AC9B !important; }
+      .site nav#main-header a.navbar-brand, .site nav#main-header i.navbar-brand, .site nav#main-header button.navbar-brand, .site nav#main-header .social-icon.navbar-brand {
+        font-size: 24px;
+        color: #15AC9B; }
+    .site nav#main-header ul li a {
+      padding-top: 20px;
+      color: #525252;
+      -webkit-transition: color 0.8s ease;
+      -moz-transition: color 0.8s ease;
+      -ms-transition: color 0.8s ease;
+      -o-transition: color 0.8s ease;
+      transition: color 0.8s ease; }
+      .site nav#main-header ul li a:hover {
+        color: #15AC9B; }
+    .site nav#main-header .nav li > form > button.logout {
+      padding: 19px; }
+    .site nav#main-header.navbar-inverse .navbar-nav > .active > a, .site nav#main-header.navbar-inverse .navbar-nav > .active > a:hover, .site nav#main-header.navbar-inverse .navbar-nav > .active > a:focus {
+      color: #15AC9B;
+      background-color: transparent; }
   .site .footer {
     height: 60px;
     background-color: #f5f5f5;

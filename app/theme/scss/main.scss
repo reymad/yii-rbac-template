@@ -1,9 +1,26 @@
 
 @import "config";
 
+body{
+  margin: 0;
+  color: $color-font;
+  font-family: "Source Sans Pro",sans-serif;
+  font-size: 16px;
+  background: url($ruta-images + 'header-top.jpg') repeat-x #fff;
+  padding-top: 10px;
+}
+
+a{
+  color: $color-corp;
+  @include transition(color .8s ease);
+  &:hover{
+    color: $color-corp-dark;
+    text-decoration: none;
+  }
+}
+
 // main...
 .site{
-
   // cabecera
   @import 'partials/_header';
 

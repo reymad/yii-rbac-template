@@ -11,6 +11,7 @@ namespace app\components;
 use Yii;
 use yii\bootstrap\Html;
 use yii\bootstrap\Nav;
+use yii\helpers\Url;
 
 class Helpers
 {
@@ -254,15 +255,15 @@ class Helpers
                     ['label' => 'About', 'url' => ['/site/about']],
                     ['label' => 'Contact', 'url' => ['/site/contact']],
                     Yii::$app->user->isGuest ? (
-                    ['label' => 'SignUp', 'url' => ['/user/register']]
+                    ['label' => 'SignUp', 'url' => ['/user/register'], 'active'=>(Url::current()=='/user/register')]// active manual
                     ) : (''),
                     Yii::$app->user->isGuest ? (
-                    ['label' => 'Login', 'url' => ['/user/login']]
+                    ['label' => 'Login', 'url' => ['/user/login'], 'active'=>(Url::current()=='/user/login')]// active manual
                     ) : (
                         '<li>'
                         . Html::beginForm(['/site/logout'], 'post')
                         . Html::submitButton(
-                            'Logout (' . $socialIcon . Yii::$app->user->identity->username . ')',
+                            'Logout (' . Yii::$app->user->identity->username . ')',
                             ['class' => 'btn btn-link logout']
                         )
                         . Html::endForm()

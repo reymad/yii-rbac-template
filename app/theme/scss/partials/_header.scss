@@ -1,1 +1,57 @@
 /* header partial | comment */
+
+
+nav#main-header{
+
+  .container{
+    width:100% !important;
+    padding: 0 40px;
+  }
+
+  background-color: $color-white;
+  border: 0;
+  border-bottom: 1px solid $color-links-header;
+  // border-top: 4px solid $color-links-header;
+  top: 10px;
+  height: 60px;
+
+  a{ padding-top: 20px; }
+
+  a,i,button,.social-icon{
+
+    font-size: $header-font-size;
+    color: $color-links-header-dark;
+    @include transition(color .8s ease);
+    &:hover{
+      color: $color-links-header !important;
+    }
+    &.navbar-brand{
+      font-size: 24px;
+      color: $color-links-header;
+    }
+  }
+  // links
+  ul{
+    li{
+      a{
+        padding-top: 20px;
+        color: $color-links-header-dark;
+        @include transition(color .8s ease);
+        &:hover{
+          color: $color-links-header;
+        }
+      }
+    }
+  }
+
+  .nav li > form > button.logout {
+    padding: 19px;
+  }
+
+  &.navbar-inverse .navbar-nav > .active > a, &.navbar-inverse .navbar-nav > .active > a:hover, &.navbar-inverse .navbar-nav > .active > a:focus {
+    color: $color-links-header;
+    background-color: transparent;
+  }
+
+}
+
