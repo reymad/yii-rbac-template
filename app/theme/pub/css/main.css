@@ -91,6 +91,10 @@ Usage
 .bordered {
   border: 1px solid #000; }
 
+img.responsive {
+  width: 100%;
+  height: auto; }
+
 /*
 $fuente: 'Futura LT W01 Medium Condensed', Arial, Helvetica, sans-serif;
 $fuente_bold: 'Futura LT W01 X Bold Condensed';
@@ -235,6 +239,9 @@ body.front {
       border-color: transparent;
       background: #fff;
       border-bottom: 1px solid #15AC9B; }
+  .site .pic-container {
+    width: 100%;
+    max-height: 600px; }
   .site .footer {
     height: 60px;
     background-color: #f5f5f5;

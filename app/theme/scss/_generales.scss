@@ -37,3 +37,10 @@
 .bordered{
   border: 1px solid #000;
 }
+img{
+  &.responsive{
+    width:100%;
+    height: auto;
+  }
+}
+

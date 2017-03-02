@@ -35,6 +35,10 @@ body.front{
   // cabecera
   @import 'partials/_header';
 
+  .pic-container{
+    width:100%;
+    max-height: 600px;
+  }
 
   // footer
   @import 'partials/_footer';

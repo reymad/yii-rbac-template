@@ -15,6 +15,8 @@ use yii\web\Controller;
 class MyController extends Controller
 {
 
+    public $imagesUrl = '/assets/dist/images/';
+
     /*
     public function afterAction($action, $result)
     {

@@ -30,6 +30,12 @@ FrontAsset::register($this);
         echo $this->render('_menu');
     ?>
 
+    <!--
+    <div class="container pic-container">
+        <?=Html::img($this->context->imagesUrl.'forest.jpg',[])?>
+    </div>
+    -->
+
     <div class="container">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
