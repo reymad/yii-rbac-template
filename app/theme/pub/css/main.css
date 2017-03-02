@@ -179,7 +179,7 @@ a {
       padding: 0 40px; }
     .site nav#main-header a {
       padding-top: 20px; }
-    .site nav#main-header a, .site nav#main-header i, .site nav#main-header button, .site nav#main-header .social-icon {
+    .site nav#main-header a, .site nav#main-header button {
       font-size: 15px;
       color: #525252;
       -webkit-transition: color 0.8s ease;
@@ -187,11 +187,14 @@ a {
       -ms-transition: color 0.8s ease;
       -o-transition: color 0.8s ease;
       transition: color 0.8s ease; }
-      .site nav#main-header a:hover, .site nav#main-header i:hover, .site nav#main-header button:hover, .site nav#main-header .social-icon:hover {
+      .site nav#main-header a:hover, .site nav#main-header button:hover {
         color: #15AC9B !important; }
-      .site nav#main-header a.navbar-brand, .site nav#main-header i.navbar-brand, .site nav#main-header button.navbar-brand, .site nav#main-header .social-icon.navbar-brand {
+      .site nav#main-header a.navbar-brand, .site nav#main-header button.navbar-brand {
         font-size: 24px;
         color: #15AC9B; }
+    .site nav#main-header .social-icon {
+      font-size: 15px;
+      color: inherit; }
     .site nav#main-header ul li a {
       padding-top: 20px;
       color: #525252;

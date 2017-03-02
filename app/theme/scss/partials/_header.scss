@@ -17,7 +17,7 @@ nav#main-header{
 
   a{ padding-top: 20px; }
 
-  a,i,button,.social-icon{
+  a,button{
 
     font-size: $header-font-size;
     color: $color-links-header-dark;
@@ -29,6 +29,10 @@ nav#main-header{
       font-size: 24px;
       color: $color-links-header;
     }
+  }
+  .social-icon{
+    font-size: $header-font-size;
+    color: inherit;
   }
   // links
   ul{
