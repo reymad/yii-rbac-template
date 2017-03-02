@@ -32,9 +32,9 @@ class RbacController extends Controller
         $auth->addChild($author, $createPost);
 
         // add "author" role and give this role the "createPost" permission
-        $author = $auth->getRole('usuario_premium');
+        // $author = $auth->getRole('usuario_premium');
         // $auth->add($author);
-        $auth->addChild($author, $createPost);
+        // $auth->addChild($author, $createPost);
 
         // add "admin" role and give this role the "updatePost" permission
         // as well as the permissions of the "author" role
@@ -72,8 +72,8 @@ class RbacController extends Controller
         $author = $auth->getRole('usuario');
         $auth->addChild($author, $updateOwnPost);
 
-        $author = $auth->getRole('usuario_premium');
-        $auth->addChild($author, $updateOwnPost);
+        // $author = $auth->getRole('usuario_premium');
+        // $auth->addChild($author, $updateOwnPost);
 
     }
 }

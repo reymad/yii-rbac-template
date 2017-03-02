@@ -32,7 +32,7 @@ FrontAsset::register($this);
 
     <!--
     <div class="container pic-container">
-        <?=Html::img($this->context->imagesUrl.'forest.jpg',[])?>
+        <?php /*echo Html::img($this->context->imagesUrl.'forest.jpg',[])*/ ?>
     </div>
     -->
 

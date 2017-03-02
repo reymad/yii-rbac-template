@@ -57,15 +57,16 @@ class PostSearch extends Post
             return $dataProvider;
         }
 
-        // grid filtering conditions
         $query->andFilterWhere([
             'post_id' => $this->post_id,
             'fichero_id' => $this->fichero_id,
-            'created_by' => $this->created_by,
             'created_at' => $this->created_at,
+            'created_by' => $this->created_by,
             'updated_at' => $this->updated_at,
             'status' => $this->status,
         ]);
+
+        // exit;
 
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'description', $this->description])

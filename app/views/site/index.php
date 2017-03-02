@@ -22,6 +22,7 @@ $this->title = 'My Yii Application';
         if(isset(Yii::$app->user->identity->accounts['twitter'])){
             $data = Yii::$app->user->identity->accounts['twitter']->decodedData;
             $screen_name = $data['screen_name'];
+            // $id = $data['id_str'];
 
             // var_dump($data);exit;
 
@@ -29,7 +30,7 @@ $this->title = 'My Yii Application';
                 'type' => TwitterPlugin::TIMELINE,
                 'screenName' => $screen_name,
                 'timelineConfig' => ['search' => '#chronoscan'],
-                'settings' => ['widget-id' => '836954715543990274'],
+                'settings' => ['widget-id' =>  '836954715543990274'],
                 // 'options' => ['height'=>'350', 'width'=>'500']
                 // 'content' => 'tweets content'
             ]);

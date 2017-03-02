@@ -149,7 +149,7 @@ $config = [
         ],
         'authManager' => [
             'class' => 'yii\rbac\DbManager', // or use 'yii\rbac\DbManager'
-            'defaultRoles' => ['invitado'],
+            // 'defaultRoles' => ['invitado'],
             // por lo que he descubierto hasta el momento:
             /*
              * rbac outh

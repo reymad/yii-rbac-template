@@ -5,14 +5,14 @@ namespace app\controllers;
 use Yii;
 use app\models\Post;
 use app\models\search\PostSearch;
-use yii\web\Controller;
+use yii\filters\AccessControl;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
  * PostController implements the CRUD actions for Post model.
  */
-class PostController extends Controller
+class PostController extends MyController
 {
     /**
      * @inheritdoc
@@ -26,6 +26,16 @@ class PostController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['index','view','update','delete','create'],
+                        'roles' => ['updatePost','createPost'],
+                    ],
+                ]
+            ]
         ];
     }
 
@@ -37,6 +47,10 @@ class PostController extends Controller
     {
         $searchModel = new PostSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        // solo admins pueden ver todos los post. esto es una ñapa, tengo que ver como hacerlo con el user can
+        if(!Yii::$app->user->identity->getIsAdmin()){
+            $dataProvider->query->andFilterWhere(['created_by' => Yii::$app->user->getId()]);
+        }
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -84,13 +98,22 @@ class PostController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->post_id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+        // vemos si podemos updatear nuestro propio post
+        if(Yii::$app->user->identity->getIsAdmin() || Yii::$app->user->can('updateOwnPost',['post'=>$model]) ){
+
+            if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                return $this->redirect(['view', 'id' => $model->post_id]);
+            } else {
+                return $this->render('update', [
+                    'model' => $model,
+                ]);
+            }
+
+        }else{
+            throw new \yii\web\HttpException(403, 'Forbidden!!');
         }
+
+
     }
 
     /**

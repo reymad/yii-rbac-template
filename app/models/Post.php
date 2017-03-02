@@ -2,7 +2,10 @@
 
 namespace app\models;
 
+use app\behaviors\UserBehavior;
+use app\models\query\PostQuery;
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "post".
@@ -19,8 +22,20 @@ use Yii;
  *
  * @property User $createdBy
  */
-class Post extends \yii\db\ActiveRecord
+class Post extends MyActiveRecord
 {
+
+    /** @inheritdoc */
+    /*
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+            UserBehavior::className(),
+        ];
+    }
+    */
+
     /**
      * @inheritdoc
      */
@@ -37,7 +52,7 @@ class Post extends \yii\db\ActiveRecord
         return [
             [['description'], 'string'],
             [['fichero_id', 'created_by', 'created_at', 'updated_at', 'status'], 'integer'],
-            [['created_by'], 'required'],
+            [['lang'], 'required'],
             [['title'], 'string', 'max' => 120],
             [['lang'], 'string', 'max' => 5],
             [['created_by'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['created_by' => 'id']],

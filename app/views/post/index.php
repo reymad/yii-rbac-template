@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'description:ntext',
             'fichero_id',
             'lang',
-            // 'created_by',
+            'created_by',
             // 'created_at',
             // 'updated_at',
             // 'status',

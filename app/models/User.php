@@ -24,6 +24,10 @@ class User extends BaseUser {
     // rbac check for rules and accesses
     // \Yii::$app->user->can('createPost')
 
+    public function getIsAdmin(){
+        return ($this->getRoleName()=='admin');
+    }
+
     /*
      * Devuelve nombre del role del user
      * */

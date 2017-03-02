@@ -274,4 +274,16 @@ class Helpers
 
     }
 
+
+    public static function getDateFormat($lang){
+
+        $format = [
+            'es-ES' => 'd-m-Y H:i:s',
+            'en-EN' => 'y-m-d H:i:s',
+        ];
+        return $format[$lang];
+
+    }
+
+
 }

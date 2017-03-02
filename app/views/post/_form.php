@@ -1,5 +1,6 @@
 <?php
 
+use kartik\widgets\Select2;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -18,15 +19,19 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'fichero_id')->textInput() ?>
 
-    <?= $form->field($model, 'lang')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'created_by')->textInput() ?>
-
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
-    <?= $form->field($model, 'status')->textInput() ?>
+    <?php
+        // echo $form->field($model, 'lang')->listBox(['es-ES'=>'Español','en-US'=>'English'])
+        // echo Html::activeDropDownList($model, 'lang',['es-ES'=>'Español','en-US'=>'English']);
+        $model->lang = Yii::$app->language;
+        echo $form->field($model, 'lang')->widget(Select2::classname(), [
+            'data' => ['es-ES'=>'Español','en-US'=>'English'],
+            'language' => Yii::$app->language,
+            'options' => ['placeholder' => $model->getAttributeLabel('lang')],
+            'pluginOptions' => [
+                'allowClear' => true,
+            ],
+        ]);
+    ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

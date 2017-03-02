@@ -5,10 +5,8 @@ namespace app\controllers;
 use Yii;
 use app\models\ContactForm;
 use app\models\LoginForm;
-use app\models\Test;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
-use yii\helpers\ArrayHelper;
 
 class SiteController extends MyController
 {
@@ -115,6 +113,8 @@ class SiteController extends MyController
         $this->_translations['app.hola-mundo']  = Yii::t('app','Hola Mundo!!');
         // var_dump(Yii::$app->params['social_client']); exit;
 
+
+        // var_dump(Yii::$app->user->identity->accounts['twitter']->decodedData); exit;
 
         // de momento solo he encontrado esta manera de acceder a la api de la social con la que nos hemos logado
         // funciona
