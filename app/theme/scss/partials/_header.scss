@@ -81,6 +81,18 @@ nav#main-header{
     }
 
   }
+  // desplegable hamburguesa
+  &.navbar-inverse .navbar-collapse, &.navbar-inverse .navbar-form {
+    border-color: transparent;
+    background: #fff;
+    border-bottom: 1px solid $color-corp;
+  }
+
+  /*
+  #main-header-collapse[aria-expanded="true"]{
+    margin-top: 10px;
+  }
+  */
 
 
 }

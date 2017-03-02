@@ -12,7 +12,7 @@ function ajaxStop(){
 // scroll manage
 $(window).on("scroll", function () {
     if ($(this).scrollTop() > 10) {
-        $("nav#main-header").css({'top':'0px','height': '50px'});
+        $("nav#main-header").css({'top':'0px','height': '60px'});
     }
     else {
         $("nav#main-header").css({'top':'10px','height': '60px'});
