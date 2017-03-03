@@ -29,7 +29,6 @@ $this->params['breadcrumbs'][] = $this->title;
             'description:ntext',
             'lang',
             'created_by',
-            'created_by',
             [
                 'attribute' => 'created_at',
                 'value' => function ($model) {

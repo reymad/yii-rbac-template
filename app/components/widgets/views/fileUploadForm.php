@@ -56,7 +56,7 @@ use yii\helpers\Url;
                 'caption' => $foto->nombre_original,
                 'size' => $foto->size,
                 'url' => '/ajax/file-delete',
-                'id' => $foto->fichero_id,
+                'key' => $foto->fichero_id,
             ];
         }
         $pluginOptions = \yii\helpers\ArrayHelper::merge($pluginOptions, $fotosOptions);

@@ -13,6 +13,8 @@ use app\components\Helpers;
 use app\models\Fichero;
 use Faker\Provider\File;
 use Yii;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\helpers\FileHelper;
 use yii\web\UploadedFile;
 
@@ -24,6 +26,30 @@ class AjaxController extends MyController
     public function init()
     {
         parent::init();
+    }
+
+    public function behaviors()
+    {
+        return [
+            /*
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
+            */
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['file-upload','file-delete'],
+                        'roles' => ['updatePost','createPost'],
+                    ],
+                ]
+            ]
+        ];
     }
 
     public function actionIndex(){
@@ -48,6 +74,22 @@ class AjaxController extends MyController
                 }
             }
         }
+        echo json_encode($error);
+
+    }
+
+    public function actionFileDelete(){
+
+        $error = false;
+
+        $id = Yii::$app->request->post('key');
+
+        $model = Fichero::findOne(['fichero_id'=>$id]);
+        $model->status = $model::STATUS_DELETED;
+        if(!$model->save()){
+            $error=true;
+        }
+
         echo json_encode($error);
 
     }
