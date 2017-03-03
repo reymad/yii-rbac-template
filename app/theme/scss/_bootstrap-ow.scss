@@ -1,0 +1,35 @@
+@import "config";
+
+.btn{
+  border-radius: 0px;
+  &.btn-primary {
+    color: $color-white;
+    background-color: $color-corp;
+    border-color: $color-corp;
+    @include transition(background $default-ease ease);
+    &:hover{
+      color: $color-white;
+      background-color: $color-corp-dark;
+    }
+  }
+  &.btn-success{
+    color: $color-white;
+    background-color: $color-sunset;
+    border-color: $color-sunset;
+    @include transition(background $default-ease ease);
+    &:hover{
+      color: $color-white;
+      background-color: $color-sunset-dark;
+    }
+  }
+  &.btn-danger{
+    color: $color-white;
+    @include transition(background $default-ease ease);
+    &:hover{
+      color: $color-white;
+    }
+  }
+
+}
+
+

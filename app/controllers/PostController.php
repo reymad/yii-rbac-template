@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\components\Helpers;
 use app\models\MyActiveRecord;
 use Yii;
 use app\models\Post;
@@ -32,7 +33,7 @@ class PostController extends MyController
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index','view','update','delete','create'],
+                        'actions' => ['index','view','update','delete','activate','create'],
                         'roles' => ['updatePost','createPost'],
                     ],
                 ]
@@ -81,6 +82,7 @@ class PostController extends MyController
         $model = new Post();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            Helpers::setFlash('success');
             return $this->redirect(['view', 'id' => $model->post_id]);
         } else {
             return $this->render('create', [
@@ -103,6 +105,7 @@ class PostController extends MyController
         if(Yii::$app->user->identity->getIsAdmin() || Yii::$app->user->can('updateOwnPost',['post'=>$model]) ){
 
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
+                Helpers::setFlash('success');
                 return $this->redirect(['view', 'id' => $model->post_id]);
             } else {
                 return $this->render('update', [
@@ -128,7 +131,25 @@ class PostController extends MyController
         // $this->findModel($id)->delete();
         $model = $this->findModel($id);
         $model->status = MyActiveRecord::STATUS_DELETED;
-        $model->save();
+        if($model->save()){
+            Helpers::setFlash('success');
+        }else{
+            Helpers::setFlash('danger');
+        }
+
+        return $this->redirect(['index']);
+    }
+
+    public function actionActivate($id)
+    {
+        // $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $model->status = MyActiveRecord::STATUS_ACTIVE;
+        if($model->save()){
+            Helpers::setFlash('success');
+        }else{
+            Helpers::setFlash('danger');
+        }
 
         return $this->redirect(['index']);
     }

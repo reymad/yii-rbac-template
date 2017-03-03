@@ -276,12 +276,31 @@ class Helpers
 
 
     public static function getDateFormat($lang){
-
         $format = [
             'es-ES' => 'd-m-Y H:i:s',
             'en-EN' => 'y-m-d H:i:s',
         ];
         return $format[$lang];
+    }
+
+    public static function setFlash($type){
+
+        $flashIcons = [
+            'success' => 'fa fa-check',
+            'warning' => 'fa fa-exclamation',
+            'info'    => 'fa fa-info',
+            'danger'  => 'fa fa-exclamation',
+        ];
+
+        Yii::$app->getSession()->setFlash($type, [
+            'type' => $type,
+            'duration' => 3000,
+            'icon' => $flashIcons[$type],
+            'message' => Yii::t('app','flash.message.'.$type),
+            'title' => Yii::t('app','flash.title.'.$type),
+            'positonY' => 'top',
+            'positonX' => 'right'
+        ]);
 
     }
 

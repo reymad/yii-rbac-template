@@ -30,10 +30,52 @@ $this->params['breadcrumbs'][] = $this->title;
             'fichero_id',
             'lang',
             'created_by',
-            // 'created_at',
-            // 'updated_at',
-            // 'status',
-            'status',
+            'created_by',
+            [
+                'attribute' => 'created_at',
+                'value' => function ($model) {
+                    return $model->formatDateI18n('created_at',Yii::$app->language);
+                },
+            ],
+            [
+                'attribute' => 'updated_at',
+                'value' => function ($model) {
+                    // return $model->formatDate('updated_at',Yii::$app->language);
+                    return $model->formatDateI18n('created_at',Yii::$app->language);
+                },
+            ],
+            [
+                'attribute' => 'status',
+                'format'=>'raw',
+                'value' => function($model){
+
+                    $ret = '';
+                    if($model->status==$model::STATUS_ACTIVE){
+                        $ret = Html::a(Yii::t('app','Borrar'),['delete','id'=>$model->post_id],
+                            ['class'=>'btn btn-xs btn-danger btn-block',
+                                'data'=>[
+                                        'method' => 'post',
+                                        'confirm' => 'Are you sure?',
+                                        /*'params'=>['id'=>$model->post_id],*/
+                                ]
+                            ]
+                        );
+                    }
+                    if($model->status==$model::STATUS_DELETED){
+                        $ret = Html::a(Yii::t('app','Activar'),['activate','id'=>$model->post_id],
+                            ['class'=>'btn btn-xs btn-primary btn-block',
+                                'data'=>[
+                                    'method' => 'post',
+                                    'confirm' => 'Are you sure?',
+                                    /*'params'=>['id'=>$model->post_id],*/
+                                ]
+                            ]
+                        );
+                    }
+                    return $ret;
+
+                }
+            ],
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

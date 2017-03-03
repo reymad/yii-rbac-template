@@ -16,6 +16,7 @@ use yii\behaviors\AttributeBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 
 class MyActiveRecord extends ActiveRecord
 {
@@ -133,5 +134,17 @@ class MyActiveRecord extends ActiveRecord
         ];
     }
 
+/*
+    public function getStatus(){
+        $ret = '';
+        if($this->status==self::STATUS_ACTIVE){
+            $ret = Html::a(Yii::t('app','Borrar'),,['class'=>'btn btn-xs btn-danger btn-block']);
+        }
+        if($this->status==self::STATUS_DELETED){
+            $ret = Html::a(Yii::t('app','Activar'),,['class'=>'btn btn-xs btn-success btn-block']);
+        }
+        return $ret;
+    }
+*/
 
 }

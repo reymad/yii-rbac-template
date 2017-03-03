@@ -1,3 +1,4 @@
+
 .fleft{
   float: left;
 }
@@ -43,4 +44,13 @@ img{
     height: auto;
   }
 }
+.text-corp{ color: $color-corp;  }
+.text-corp-dark{ color: $color-corp-dark;  }
+.text-sunset{ color: $color-sunset;  }
+.text-sunset-dark{ color: $color-sunset-dark;  }
+.text-grey{ color: $color-font;  }
+.text-grey-light{ color: $color-font-light;  }
+
+
+
 
