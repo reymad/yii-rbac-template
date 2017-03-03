@@ -1,33 +1,33 @@
 <?php
 
 use app\components\Helpers;
+use kartik\icons\Icon;
 use kartik\social\TwitterPlugin;
 use russ666\widgets\Countdown;
 
 /* @var $this yii\web\View */
-
-echo 'branch module';
-
 $this->title = 'My Yii Application';
 ?>
 <div class="site-index">
 
     <div class="jumbotron">
-        <h1><?= Helpers::test(); ?></h1>
-
+        <h1>
+            <?php
+                // tarta
+                // echo Icon::show('birthday-cake', ['class'=>'fa-6 text-sunset'] );
+            ?>
+        </h1>
         <p class="lead">Hola Nen!</p>
-
-
         <?php
+            // danis bd // date('2017-09-08 00:00:01 O'),
 
             echo Countdown::widget([
-                'datetime' => date('2017-09-08 00:00:01 O', time() + 1000),
+                'datetime' => date('2017-03-03 15:24:01'),
                 'format' => '%-m months %-W weeks %-d days %-H h %M min %S sec',
                 'events' => [
-                    'finish' => 'function(){location.reload()}',
+                    // 'finish' => 'function(){location.reload()}',
                 ],
-            ])
-
+            ]);
         ?>
 
         <?php

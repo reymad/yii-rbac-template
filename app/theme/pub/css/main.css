@@ -58,6 +58,67 @@ $fuente_bold: 'Futura LT W01 X Bold Condensed';
 $fuente_italic: 'Futura LT W01 Medium Oblique';
 $fuente_medium: 'Futura LT W01 Medium';
 */
+.fleft {
+  float: left; }
+
+.fright {
+  float: right; }
+
+.clear {
+  clear: both !important; }
+
+.text-center {
+  text-align: center; }
+
+.text-justify {
+  text-align: justify; }
+
+.text-left {
+  text-align: left; }
+
+.text-right {
+  text-align: right; }
+
+.ohidden {
+  overflow: hidden; }
+
+.oauto {
+  overflow: auto; }
+
+.oculto {
+  display: none; }
+
+.visible {
+  display: block; }
+
+.centered {
+  margin: 0 auto; }
+
+.bordered {
+  border: 1px solid #000; }
+
+img.responsive {
+  width: 100%;
+  height: auto; }
+
+.text-corp {
+  color: #15AC9B; }
+
+.text-corp-dark {
+  color: #009092; }
+
+.text-sunset {
+  color: #f4645f; }
+
+.text-sunset-dark {
+  color: #dc5a56; }
+
+.text-grey {
+  color: #525252; }
+
+.text-grey-light {
+  color: #ccc; }
+
 body.front {
   margin: 0;
   color: #525252;
@@ -299,8 +360,8 @@ $fuente_medium: 'Futura LT W01 Medium';
       background-color: #009092; }
   .btn.btn-success {
     color: #fff;
-    background-color: #F48024;
-    border-color: #F48024;
+    background-color: #f4645f;
+    border-color: #f4645f;
     -webkit-transition: background 0.6s ease;
     -moz-transition: background 0.6s ease;
     -ms-transition: background 0.6s ease;
@@ -308,7 +369,7 @@ $fuente_medium: 'Futura LT W01 Medium';
     transition: background 0.6s ease; }
     .btn.btn-success:hover {
       color: #fff;
-      background-color: #FF6C00; }
+      background-color: #dc5a56; }
   .btn.btn-danger {
     color: #fff;
     -webkit-transition: background 0.6s ease;
