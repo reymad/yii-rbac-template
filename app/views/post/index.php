@@ -27,7 +27,6 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
             'title',
             'description:ntext',
-            'fichero_id',
             'lang',
             'created_by',
             'created_by',
@@ -74,6 +73,18 @@ $this->params['breadcrumbs'][] = $this->title;
                     }
                     return $ret;
 
+                }
+            ],
+            [
+                'label' => 'photos',
+                'format'=>'raw',
+                'value' => function($model){
+
+                    if(isset($model->ficheros) && is_array($model->ficheros)){
+                        return count($model->ficheros);
+                    }else{
+                        return 0;
+                    }
                 }
             ],
             ['class' => 'yii\grid\ActionColumn'],

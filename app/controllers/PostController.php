@@ -83,7 +83,7 @@ class PostController extends MyController
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             Helpers::setFlash('success');
-            return $this->redirect(['view', 'id' => $model->post_id]);
+            return $this->redirect(['update', 'id' => $model->post_id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -106,7 +106,7 @@ class PostController extends MyController
 
             if ($model->load(Yii::$app->request->post()) && $model->save()) {
                 Helpers::setFlash('success');
-                return $this->redirect(['view', 'id' => $model->post_id]);
+                return $this->redirect(['update', 'id' => $model->post_id]);
             } else {
                 return $this->render('update', [
                     'model' => $model,

@@ -31,7 +31,6 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'post_id',
             'title',
             'description:ntext',
-            'fichero_id',
             'lang',
             'created_by',
             [

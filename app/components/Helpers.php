@@ -8,9 +8,11 @@
 
 namespace app\components;
 
+use app\models\Fichero;
 use Yii;
 use yii\bootstrap\Html;
 use yii\bootstrap\Nav;
+use yii\helpers\FileHelper;
 use yii\helpers\Url;
 
 class Helpers
@@ -304,5 +306,93 @@ class Helpers
 
     }
 
+    public static function adjuntoGuardar($archivo, $model, $dir, $resize=false, $prefijo = '', $padre = '', $filename = false){
+
+        $fichero_id = false;
+
+        // ini_set('upload_max_filesize', '10M');
+
+        if (!is_dir($dir)) FileHelper::createDirectory($dir, 0775, true);
+
+        $extension = pathinfo($archivo->name, PATHINFO_EXTENSION);
+        if($filename) {
+            $nombre = $filename . '.' . $extension;
+        } else {
+            $nombre = md5($filename.mt_rand()) . '.' . $extension;
+        }
+
+        if($prefijo) $nombre = $prefijo .'_' . $nombre;
+
+        if ($archivo->saveAs($dir . $nombre)) {
+            $fichero = new Fichero;
+            $fichero->tabla_padre    = $model->tabla_padre;
+            $fichero->tabla_padre_id = $model->tabla_padre_id;
+            $fichero->ruta = '/'.$dir;
+            $fichero->nombre = $nombre;
+            $fichero->nombre_original = $archivo->name;
+            $fichero->ruta_completa = $fichero->ruta.$fichero->nombre;
+            $fichero->size = $archivo->size;
+            $fichero->extension = $extension;
+            $fichero->created_by = Yii::$app->user->id;
+            // $fichero->status = 10;
+
+            if ($fichero->save()) {
+                $fichero_id = $fichero->fichero_id;
+            }
+        }
+        return $fichero_id;
+        /*
+        if($resize) {
+
+            switch ($resize) {
+
+                case 'layout':
+
+                    $alto = 425;
+                    $ancho = 1400;
+
+                    $img_resized = new Imagick($dir . $nombre);
+                    $img_resized->adaptiveResizeImage($ancho, $alto);
+
+                    self::resizeImage($dir . $nombre, $ancho, $alto, Imagick::DISPOSE_NONE, 0, false, null);
+
+                    break;
+                case 'publicacion':
+
+                    $alto = 128;
+                    $ancho = 100;
+
+                    $img_resized = new Imagick($dir . $nombre);
+                    $img_resized->adaptiveResizeImage($ancho, $alto);
+
+                    self::resizeImage($dir . $nombre, $ancho, $alto, Imagick::DISPOSE_NONE, 0, false, null);
+
+                    break;
+
+                case 'noticia':// en este caso hay que guardar dos imagenes. una de 250 x 240 para el listview y otra con crop de 450 x 350 (ancho x alto)
+
+                    // para carrusel de detalle
+                    $alto = 325;
+                    $ancho = 800;
+
+                    $img_resized = new Imagick($dir . $nombre);
+                    $img_resized->adaptiveResizeImage($ancho, $alto);
+
+                    self::resizeImage($dir . $nombre, $ancho, $alto, Imagick::DISPOSE_NONE, 0, false, null);
+
+                    // para thumbs de imagen de noticias
+                    $alto = 240;
+                    $ancho = 250;
+
+                    self::adjunto_thumbnail_yii2($fichero_id,'thumb', $ancho, $alto, $dir);
+
+                    break;
+
+
+            }
+        }
+        */
+
+    }// yii2
 
 }

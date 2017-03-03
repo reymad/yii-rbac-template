@@ -13,7 +13,6 @@ use yii\behaviors\TimestampBehavior;
  * @property int $post_id
  * @property string $title
  * @property string $description
- * @property int $fichero_id
  * @property string $lang
  * @property int $created_by
  * @property int $created_at
@@ -44,6 +43,10 @@ class Post extends MyActiveRecord
         return 'post';
     }
 
+    public function getId(){
+        return (int)$this->post_id;
+    }
+
     /**
      * @inheritdoc
      */
@@ -51,7 +54,7 @@ class Post extends MyActiveRecord
     {
         return [
             [['description'], 'string'],
-            [['fichero_id', 'created_by', 'created_at', 'updated_at', 'status'], 'integer'],
+            [['created_by', 'created_at', 'updated_at', 'status'], 'integer'],
             [['lang'], 'required'],
             [['title'], 'string', 'max' => 120],
             [['lang'], 'string', 'max' => 5],
@@ -68,7 +71,6 @@ class Post extends MyActiveRecord
             'post_id' => Yii::t('app', 'Post ID'),
             'title' => Yii::t('app', 'Title'),
             'description' => Yii::t('app', 'Description'),
-            'fichero_id' => Yii::t('app', 'Fichero ID'),
             'lang' => Yii::t('app', 'Lang'),
             'created_by' => Yii::t('app', 'Created By'),
             'created_at' => Yii::t('app', 'Created At'),
@@ -93,4 +95,12 @@ class Post extends MyActiveRecord
     {
         return new PostQuery(get_called_class());
     }
+
+    public function getFicheros(){
+
+        return $this->hasMany(Fichero::className(), ['tabla_padre_id' => 'post_id'])
+            ->andOnCondition(['tabla_padre' => self::tableName()]);
+
+    }
+
 }

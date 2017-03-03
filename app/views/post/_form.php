@@ -1,5 +1,6 @@
 <?php
 
+use app\components\widgets\FileUploadFormWidget;
 use kartik\widgets\Select2;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
@@ -16,8 +17,6 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
-
-    <?= $form->field($model, 'fichero_id')->textInput() ?>
 
     <?php
         // echo $form->field($model, 'lang')->listBox(['es-ES'=>'Español','en-US'=>'English'])
@@ -38,5 +37,13 @@ use yii\widgets\ActiveForm;
     </div>
 
     <?php ActiveForm::end(); ?>
+
+    <?php
+        if(!$model->isNewRecord){
+            echo FileUploadFormWidget::widget(['modelPadre' => $model]);
+        }else{
+            echo 'Guarda tu post y podrás proceder a subir las fotos ;)';
+        }
+    ?>
 
 </div>
