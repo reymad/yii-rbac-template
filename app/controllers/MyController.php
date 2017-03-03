@@ -28,7 +28,7 @@ class MyController extends Controller
 
     public function init()
     {
-        parent::init();
+        parent::init();//
     }
 
 
